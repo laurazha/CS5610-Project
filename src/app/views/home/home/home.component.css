@@ -1,14 +1,12 @@
-input.form-control {
-  margin-bottom: 10px;
+.bg {
+  background-image: url("https://mytecharmor.com/wp-content/uploads/2016/07/Website-Background.png");
+  background-repeat: repeat;
+  background-attachment: fixed;
 }
 
-.btn {
-  margin-bottom: 10px;
-  margin-top: 10px;
-}
-
-.form-check {
-  margin-bottom: 10px;
+.img-slide {
+  width: 20vw;
+  height: 60vw;
 }
 
 .right-margin {
@@ -36,8 +34,4 @@ input.form-control {
   font-size: 30px;
   font-weight: bold;
   text-shadow: 2px 2px 2px #aaa;
-}
-
-.container-padding {
-  padding-top: 30px;
 }
