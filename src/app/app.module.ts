@@ -8,6 +8,12 @@ import { LoginComponent } from './views/home/login/login.component';
 import {routing} from './app.routing';
 import { HomeComponent } from './views/home/home/home.component';
 import { RegisterComponent } from './views/home/register/register.component';
+import { TopCoursesComponent } from './views/home/top-courses/top-courses.component';
+import {SharedService} from './services/shared.service';
+import {UserService} from './services/user.service.client';
+import {FormsModule} from '@angular/forms';
+import {AuthGuard} from './services/auth-guard.service';
+import {HttpModule} from '@angular/http';
 
 
 @NgModule({
@@ -15,13 +21,16 @@ import { RegisterComponent } from './views/home/register/register.component';
     AppComponent,
     LoginComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    TopCoursesComponent
   ],
   imports: [
     BrowserModule,
-    routing
+    routing,
+    FormsModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [UserService, SharedService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

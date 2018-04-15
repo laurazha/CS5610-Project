@@ -1,3 +1,84 @@
-<p>
-  login works!
-</p>
+<div class="bg">
+  <div></div>
+<div class="container container-padding">
+  <h1>Login</h1>
+  <br/>
+
+  <div *ngIf="errorFlag"
+       class="alert alert-danger">
+    {{errorMsg}}
+  </div>
+
+  <label>Choose your role: </label>
+  <div class="form-check">
+    <input class="form-check-input"
+           type="radio"
+           name="exampleRadios"
+           id="student"
+           checked
+           [value]="'STUDENT'"
+           [(ngModel)]="type">
+    <label class="form-check-label" for="student">
+      Student
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input"
+           type="radio"
+           name="exampleRadios"
+           id="professor"
+           [value]="'PROFESSOR'"
+           [(ngModel)]="type">
+    <label class="form-check-label" for="professor">
+      Professor
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input"
+           type="radio"
+           name="exampleRadios"
+           id="admin"
+           [value]="'ADMIN'"
+           [(ngModel)]="type">
+    <label class="form-check-label" for="admin">
+      Admin
+    </label>
+  </div>
+  <br/>
+
+  <form (ngSubmit)="login()" #f="ngForm">
+    <label for="username">Username:</label>
+    <input type="text"
+           class="form-control"
+           placeholder="username"
+           name="username"
+           id="username"
+           ngModel required #username="ngModel"/>
+    <span class="help-block" *ngIf="!username.valid && username.touched">
+      Please enter username!
+    </span>
+
+    <label for="password">Password:</label>
+    <input type="password"
+           class="form-control"
+           placeholder="password"
+           name="password"
+           id="password"
+           ngModel required #password="ngModel"/>
+    <span class="help-block" *ngIf="!password.valid && password.touched">
+      Please enter password!
+    </span>
+
+    <button class="btn btn-primary btn-block"
+            type="submit"
+            [disabled]="!f.valid">Login</button>
+  </form>
+  <a href="{{baseUrl}}/facebook/login" class="btn btn-primary btn-block">
+    Login with Facebook
+  </a>
+  <a class="btn btn-info btn-block" routerLink="/register">Register</a>
+  <a class="btn btn-success btn-block" routerLink="/">Visit as Guest</a>
+</div>
+<div></div>
+</div>
+
