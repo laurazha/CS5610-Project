@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"/>-->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <!--<link href="../../../../../styles.css" rel="stylesheet"/>-->
+</head>
+<body>
+<!--<nav class="navbar fixed-top cl-blue-navbar">-->
+  <!--<div class="container-fluid">-->
+    <!--<p class="navbar-text pull-left">-->
+      <!--<a href="../../../user/student/student-dashboard.html" class="navbar-link cl-text-white">-->
+        <!--<span class="fa fa-chevron-left"></span>-->
+      <!--</a>-->
+    <!--</p>-->
+    <!--<a class="cl-text-white navbar-brand cl-text-bold" href="#">-->
+      <!--Courses-->
+    <!--</a>-->
+  <!--</div>-->
+<!--</nav>-->
+<nav class="navbar fixed-top cl-blue-navbar">
+  <a class="navbar-brand" routerLink="/user">
+    <span class="fa fa-chevron-left text-white"></span>
+  </a>
+  <div class="navbar-brand text-white font-weight-bold">
+    Courses
+  </div>
+  <a class="navbar-brand pull-right" routerLink="/user/website/new">
+    <span class="fa fa-plus text-white"></span>
+  </a>
+</nav>
+
+<div class="container">
+  <ul class="list-group cl-list-group-borderless">
+    <li class="list-group-item cl-list-item-borderless">
+      <a href="../../../widget/widget-list/widget-list.component.html">Course 1</a>
+      <a class="right" href="../rating/rating.component.html" >Rate this course</a>
+    </li>
+    <li class="list-group-item cl-list-item-borderless">
+      <a href="../../../widget/widget-list/widget-list.component.html">Course 2</a>
+      <a class="right" href="../rating/rating.component.html" >Rate this course</a>
+    </li>
+    <li class="list-group-item cl-list-item-borderless">
+      <a href="../../../widget/widget-list/widget-list.component.html">Course 3</a>
+      <a class="right" href="../rating/rating.component.html" >Rate this course</a>
+    </li>
+    <li class="list-group-item cl-list-item-borderless">
+      <a href="../../../widget/widget-list/widget-list.component.html">Course 4</a>
+      <a class="right" href="../rating/rating.component.html" >Rate this course</a>
+    </li>
+    <li class="list-group-item cl-list-item-borderless">
+      <a href="../student-course-new/student-course-new.component.html">Add Another Course</a>
+    </li>
+  </ul>
+</div>
+
+<nav class="navbar fixed-bottom cl-blue-navbar">
+  <div class="container-fluid">
+    <a routerLink="/"
+       class="navbar-text white-text pull-left">
+      <span class="fa fa-home"></span>
+    </a>
+    <a routerLink="../"
+       class="navbar-text white-text pull-right">
+      <span class="fa fa-user"></span>
+    </a>
+  </div>
+</nav>
+</body>
+</html>
+
+

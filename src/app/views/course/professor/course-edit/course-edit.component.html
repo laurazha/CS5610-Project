@@ -3,56 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <title>Courses List</title>
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+  <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"/>-->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <link href="../../../../styles.css" rel="stylesheet"/>
+  <!--<link href="../../../../../styles.css" rel="stylesheet"/>-->
 </head>
 <body>
-<nav class="navbar navbar-fixed-top cl-blue-navbar">
-  <div class="row">
-    <div class="col-xs-4 hidden-xs">
-      <div class="container-fluid">
-        <p class="navbar-text pull-left">
-          <a href="website-list.html" class="navbar-link cl-text-white">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-          </a>
-        </p>
-        <a class="cl-text-white navbar-brand cl-text-bold" href="#">
-          Courses
-        </a>
-        <a href="website-new.html" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
-          <span class="glyphicon glyphicon-plus"></span>
-        </a>
-      </div>
-    </div>
-    <div class="col-xs-8">
-      <div class="container-fluid">
-        <a class="cl-text-white navbar-brand cl-text-bold" href="#">
-          Edit Courses
-        </a>
-      </div>
-    </div>
+<nav class="navbar fixed-top cl-blue-navbar">
+  <a class="navbar-brand" routerLink="/user">
+    <span class="fa fa-chevron-left text-white"></span>
+  </a>
+  <div class="navbar-brand text-white font-weight-bold">
+    Courses
   </div>
+  <a class="navbar-brand pull-right" routerLink="/user/website/new">
+    <span class="fa fa-plus text-white"></span>
+  </a>
 </nav>
 
 <div class="contain-fluid">
   <div class="col-xs-4 hidden-xs">
     <ul class="list-group cl-list-group-borderless">
       <li class="list-group-item cl-list-item-borderless">
-        <a href="website-edit.html"><span class="glyphicon glyphicon-cog pull-right"></span></a>
-        <a href="../page/page-list.html">Course 1</a>
+        <a href="../course-edit/course-edit.component.html"><span class="fa fa-cog right"></span></a>
+        <a href="../../../widget/widget-list/widget-list.component.html">Course 1</a>
       </li>
       <li class="list-group-item cl-list-item-borderless">
-        <a href="website-edit.html"><span class="glyphicon glyphicon-cog pull-right"></span></a>
-        <a href="../page/page-list.html">Course 2</a>
+        <a href="../course-edit/course-edit.component.html"><span class="fa fa-cog right"></span></a>
+        <a href="../../../widget/widget-list/widget-list.component.html">Course 2</a>
       </li>
       <li class="list-group-item cl-list-item-borderless">
-        <a href="website-edit.html"><span class="glyphicon glyphicon-cog pull-right"></span></a>
-        <a href="../page/page-list.html">Course 3</a>
+        <a href="../course-edit/course-edit.component.html"><span class="fa fa-cog right"></span></a>
+        <a href="../../../widget/widget-list/widget-list.component.html">Course 3</a>
       </li>
       <li class="list-group-item cl-list-item-borderless">
-        <a href="website-edit.html"><span class="glyphicon glyphicon-cog pull-right"></span></a>
-        <a href="../page/page-list.html">Course 4</a>
+        <a href="../course-edit/course-edit.component.html"><span class="fa fa-cog right"></span></a>
+        <a href="../../../widget/widget-list/widget-list.component.html">Course 4</a>
       </li>
     </ul>
   </div>
@@ -71,19 +56,21 @@
         <label for="website-description">Course Description</label>
         <textarea id="website-description" class="form-control" rows="5" placeholder="This is the description."></textarea>
       </div>
-      <a class="btn left btn-success btn-block cl-8-top" href="website-list.html">Update</a>
-      <a class="btn right btn-danger btn-block cl-8-top" href="website-list.html">Delete</a>
+      <a class="btn btn-success btn-block cl-8-top" href="../professor-course-list/professor-course-list.component.html">Update</a>
+      <a class="btn btn-danger  btn-block cl-8-top" href="../professor-course-list/professor-course-list.component.html">Delete</a>
     </form>
   </div>
 </div>
 
-<nav class="navbar navbar-fixed-bottom cl-blue-navbar">
-  <div class="container-fuild">
-    <a href="../user/profile.html" class="navbar-link navbar-text pull-left cl-text-white cl-icon-padding">
-      <span class="glyphicon glyphicon-home"></span>
+<nav class="navbar fixed-bottom cl-blue-navbar">
+  <div class="container-fluid">
+    <a routerLink="/"
+       class="navbar-text white-text pull-left">
+      <span class="fa fa-home"></span>
     </a>
-    <a href="../user/profile.html" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
-      <span class="glyphicon glyphicon-user"></span>
+    <a routerLink="../"
+       class="navbar-text white-text pull-right">
+      <span class="fa fa-user"></span>
     </a>
   </div>
 </nav>

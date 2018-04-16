@@ -3,26 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <title>Rating Course</title>
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <link href="../../../../styles.css" rel="stylesheet"/>
 </head>
 <body>
-<nav class="navbar navbar-fixed-top cl-blue-navbar">
-  <div class="row">
-    <div class="col-xs-4 hidden-xs">
-      <div class="container-fluid">
-        <p class="navbar-text pull-left">
-          <a href="website-list.html" class="navbar-link cl-text-white">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-          </a>
-        </p>
-        <a class="cl-text-white navbar-brand cl-text-bold" href="#">
-          Courses
-        </a>
-      </div>
-    </div>
+<!--<nav class="navbar fixed-top cl-blue-navbar">-->
+  <!--<div class="row">-->
+    <!--<div class="col-xs-4 hidden-xs">-->
+      <!--<div class="container-fluid">-->
+        <!--<p class="navbar-text pull-left">-->
+          <!--<a href="../professor-course-list/professor-course-list.component.html" class="navbar-link cl-text-white">-->
+            <!--<span class="fa fa-chevron-left"></span>-->
+          <!--</a>-->
+        <!--</p>-->
+        <!--<a class="cl-text-white navbar-brand cl-text-bold" href="#">-->
+          <!--Courses-->
+        <!--</a>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</nav>-->
+<nav class="navbar fixed-top cl-blue-navbar">
+  <a class="navbar-brand" routerLink="/user">
+    <span class="fa fa-chevron-left text-white"></span>
+  </a>
+  <div class="navbar-brand text-white font-weight-bold">
+    Courses
   </div>
+  <!--<a class="navbar-brand pull-right" routerLink="/user/website/new">-->
+    <!--<span class="fa fa-plus text-white"></span>-->
+  <!--</a>-->
 </nav>
 
 <div class="container">
@@ -34,17 +43,19 @@
     <div class="form-group cl-8-top">
       <label for="website-name">Course Name: XXX</label>
     </div>
-    <a class="btn left btn-info btn-block cl-8-top" href="website-list.html">Submit</a>
+    <a class="btn left btn-info btn-block cl-8-top" href="../professor-course-list/professor-course-list.component.html">Submit</a>
   </div>
 </div>
 
-<nav class="navbar navbar-fixed-bottom cl-blue-navbar">
-  <div class="container-fuild">
-    <a href="../user/profile.html" class="navbar-link navbar-text pull-left cl-text-white cl-icon-padding">
-      <span class="glyphicon glyphicon-home"></span>
+<nav class="navbar fixed-bottom cl-blue-navbar">
+  <div class="container-fluid">
+    <a routerLink="/"
+       class="navbar-text white-text pull-left">
+      <span class="fa fa-home"></span>
     </a>
-    <a href="../user/profile.html" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
-      <span class="glyphicon glyphicon-user"></span>
+    <a routerLink="../"
+       class="navbar-text white-text pull-right">
+      <span class="fa fa-user"></span>
     </a>
   </div>
 </nav>
