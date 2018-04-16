@@ -17,7 +17,6 @@ import { StudentNewComponentComponent } from './views/user/admin/student-new-com
 import { ProfessorNewComponentComponent } from './views/user/admin/professor-new-component/professor-new-component.component';
 import { HomeComponent } from './views/home/home/home.component';
 import { RegisterComponent } from './views/home/register/register.component';
-<<<<<<< HEAD
 import { StudentCourseListComponent } from './views/course/student/student-course-list/student-course-list.component';
 import { WidgetListComponent } from './views/widget/widget-list/widget-list.component';
 import {StudentCourseNewComponent} from './views/course/student/student-course-new/student-course-new.component';
@@ -25,7 +24,6 @@ import {RatingComponent} from './views/course/student/rating/rating.component';
 import {ProfessorCourseNewComponent} from './views/course/professor/professor-course-new/professor-course-new.component';
 import {ProfessorCourseListComponent} from './views/course/professor/professor-course-list/professor-course-list.component';
 import {CourseEditComponent} from './views/course/professor/course-edit/course-edit.component';
-=======
 import { TopCoursesComponent } from './views/home/top-courses/top-courses.component';
 import {SharedService} from './services/shared.service';
 import {UserService} from './services/user.service.client';
@@ -33,7 +31,6 @@ import {FormsModule} from '@angular/forms';
 import {AuthGuard} from './services/auth-guard.service';
 import {HttpModule} from '@angular/http';
 
->>>>>>> 6651af6828c38bc26b45bcf7887f389df18dff93
 
 @NgModule({
   declarations: [
@@ -49,17 +46,14 @@ import {HttpModule} from '@angular/http';
     ProfessorNewComponentComponent,
     HomeComponent,
     RegisterComponent,
-<<<<<<< HEAD
     StudentCourseListComponent,
     ProfessorCourseListComponent,
     WidgetListComponent,
     ProfessorCourseNewComponent,
     CourseEditComponent,
     StudentCourseNewComponent,
-    RatingComponent
-=======
+    RatingComponent,
     TopCoursesComponent
->>>>>>> 6651af6828c38bc26b45bcf7887f389df18dff93
   ],
   imports: [
     BrowserModule,
