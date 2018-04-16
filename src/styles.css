@@ -1,13 +1,13 @@
-<<<<<<< HEAD
+
 body {
   padding-top: 70px;
   padding-bottom: 70px;
 }
+
 input.form-control {
   margin-bottom: 5px;
 }
 
-=======
 body, html {
   height: 100%;
 }
@@ -17,4 +17,4 @@ a:hover {
 }
 
 /* You can add global styles to this file, and also import other style files */
->>>>>>> cd7807d5aab0337763e7edb24a78c24dc2e03a8e
+
