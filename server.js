@@ -9,6 +9,12 @@ const baseUrl = 'http://localhost:4200';
 // npm install cookie-parser --save
 // npm install express-session --save
 
+// npm install mongoose --save
+// npm install bcrypt-nodejs --save
+// npm install passport-facebook --save
+// npm install passport-local --save
+
+
 const express = require('express');
 const path = require('path');
 const http = require('http');
@@ -53,7 +59,7 @@ const port = process.env.PORT || '3100';
 app.set('port', port);
 const server = http.createServer(app);
 
-// require("./assignment/app")(app);
+require("./server/app")(app);
 
 app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, 'dist/index.html'));
