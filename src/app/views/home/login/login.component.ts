@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
           this.sharedService.user = user;
           if (this.sharedService.user.type !== this.type) {
             this.errorFlag = true;
+            this.userService.logout();
           } else if (this.type === 'STUDENT') {
             this.router.navigate(['/student']);
           } else if (this.type === 'PROFESSOR') {
@@ -43,6 +44,7 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['/admin']);
           } else {
             this.errorFlag = true;
+            this.userService.logout();
           }
         },
         (error: any) => {
