@@ -30,8 +30,8 @@ module.exports = function(app) {
   }
 
   function addCourseForStudent(req, res) {
-    var userId = res.params.userId;
-    var courseId = res.params.courseId;
+    var userId = req.params.userId;
+    var courseId = req.params.courseId;
     courseModel.addCourseForStudent(userId, courseId).then(
       function(course) {
         if(course) {

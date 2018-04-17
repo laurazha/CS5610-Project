@@ -9,10 +9,10 @@ var CourseSchema = mongoose.Schema({
   description: String,
   title: String,
   rating: String,
-  widgets: [{
-   type: mongoose.Schema.Type.ObjectId,
-   ref: 'Widget'
-  }],
+  // widgets: [{
+  //  type: mongoose.Schema.Type.ObjectId,
+  //  ref: 'Widget'
+  // }],
   dateCreated: {
     type: Date,
     default: Date.now
