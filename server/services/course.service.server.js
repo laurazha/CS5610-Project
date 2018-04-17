@@ -4,7 +4,9 @@ module.exports = function(app) {
   app.get("/api/course/:courseId", findCourseById);
   app.put("/api/course/:courseId", updateCourse);
   app.delete("/api/course/:courseId", deleteCourse);
-  app.get("api/course/course?name=", findCourseByName);
+  app.get("/api/course/course?name=", findCourseByName);
+  app.put("/api/user/:userId/course/:courseId", addCourseForStudent);
+
   //var course_name = req.query.name
   // courseMode.findByName(course_name).then();
 
@@ -16,6 +18,23 @@ module.exports = function(app) {
     courseModel.createCourseForUser(userId, course).then(
       function (course) {
         if (course) {
+          res.json(course);
+        } else {
+          res.sendStatus(400).send("Something went wrong");
+        }
+      },
+      function (err) {
+        res.sendStatus(400).send(err);
+      }
+    );
+  }
+
+  function addCourseForStudent(req, res) {
+    var userId = res.params.userId;
+    var courseId = res.params.courseId;
+    courseModel.addCourseForStudent(userId, courseId).then(
+      function(course) {
+        if(course) {
           res.json(course);
         } else {
           res.sendStatus(400).send("Something went wrong");
@@ -59,12 +78,7 @@ module.exports = function(app) {
     var courseName = req.query.name;
     courseModel.findCourseByName(courseName).then(
       function (course) {
-        if(course) {
-          res.json(course);
-        }
-        else {
-          res.sendStatus(400).send("This course does not exist");
-        }
+        res.json(course);
       },
       function (err) {
         res.sendStatus(400).send(err);
