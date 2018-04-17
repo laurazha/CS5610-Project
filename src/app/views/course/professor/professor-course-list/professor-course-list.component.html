@@ -1,41 +1,36 @@
 <nav class="navbar fixed-top nav-blue">
-  <a class="navbar-brand" routerLink="/user">
+  <a class="navbar-brand" routerLink="/professor">
     <span class="fa fa-chevron-left text-white"></span>
   </a>
   <div class="navbar-brand text-white font-weight-bold">
     Courses
   </div>
-  <a class="navbar-brand pull-right" routerLink="/user/website/new">
+  <a class="navbar-brand pull-right" routerLink="/professor/courses/new">
     <span class="fa fa-plus text-white"></span>
   </a>
 </nav>
 
-<div class="container">
-  <ul class="list-group cl-list-group-borderless">
-    <li class="list-group-item cl-list-item-borderless">
-      <a href="../../../widget/widget-list/widget-list.component.html">Course 1</a>
-      <a class="center" href="website-edit.html" >Grade this course</a>
-      <a class="btn btn-danger right" href="professor-course-list.component.html">Delete</a>
-    </li>
-    <li class="list-group-item cl-list-item-borderless">
-      <a href="../../../widget/widget-list/widget-list.component.html">Course 2</a>
-      <a class="center" href="website-edit.html" >Grade this course</a>
-      <a class="btn btn-danger right" href="professor-course-list.component.html">Delete</a>
-    </li>
-    <li class="list-group-item cl-list-item-borderless">
-      <a href="../../../widget/widget-list/widget-list.component.html">Course 3</a>
-      <a class="center" href="website-edit.html" >Grade this course</a>
-      <a class="btn btn-danger right" href="professor-course-list.component.html">Delete</a>
-    </li>
-    <li class="list-group-item cl-list-item-borderless">
-      <a href="../../../widget/widget-list/widget-list.component.html">Course 4</a>
-      <a class="center" href="website-edit.html" >Grade this course</a>
-      <a class="btn btn-danger right" href="professor-course-list.component.html">Delete</a>
-    </li>
-    <li class="list-group-item cl-list-item-borderless">
-      <a href="../professor-course-new/professor-course-new.component.html">Add Another Course</a>
-    </li>
-  </ul>
+<div class="container-fluid cl-body-padding">
+  <!--<ul class="list-group cl-list-group-borderless">-->
+    <!--<li class="list-group-item cl-list-item-borderless">-->
+      <!--<a href="../../../widget/widget-list/widget-list.component.html">Course 1</a>-->
+      <!--<a class="center" href="website-edit.html" >Grade this course</a>-->
+      <!--<a class="btn btn-danger right" href="professor-course-list.component.html">Delete</a>-->
+    <!--</li>-->
+    <!---->
+    <!--<li class="list-group-item cl-list-item-borderless">-->
+      <!--<a href="../professor-course-new/professor-course-new.component.html">Add Another Course</a>-->
+    <!--</li>-->
+  <!--</ul>-->
+  <div class="row extra-padding" *ngFor="let course of courses">
+    <a class="extra-left-padding" routerLink="/user/courses/{{course._id}}">{{course.name + " " + course.title}}</a>
+    <a class="center" routerLink="/professor/courses/{{course._id}}">Grade this Course</a>
+    <a (click)="delete(course)" class="btn btn-danger">Delete</a>
+  </div>
+
+  <div class = "row extra-padding">
+    <a class="extra-left-padding" routerLink="professor/courses/new">Add Another Course</a>
+  </div>
 </div>
 
 <nav class="navbar fixed-bottom nav-blue">

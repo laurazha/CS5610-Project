@@ -71,14 +71,14 @@ export class UserService {
       );
   }
 
-  findUserById(userId: string) {
+  findUserById(userId: String) {
     return this._http.get(this.baseUrl + '/api/user/' + userId)
       .map((response: Response) => {
         return response.json();
       });
   }
 
-  updateUserInServer(userId: string, user: User) {
+  updateUserInServer(userId: String, user: User) {
     return this._http.put(this.baseUrl + '/api/user/' + userId, user)
       .map((response: Response) => {
         return response.json();

@@ -1,49 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Rating Course</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-</head>
-<body>
-<!--<nav class="navbar fixed-top cl-blue-navbar">-->
-  <!--<div class="row">-->
-    <!--<div class="col-xs-4 hidden-xs">-->
-      <!--<div class="container-fluid">-->
-        <!--<p class="navbar-text pull-left">-->
-          <!--<a href="../student-course-list/student-course-list.component.html" class="navbar-link cl-text-white">-->
-            <!--<span class="fa fa-chevron-left"></span>-->
-          <!--</a>-->
-        <!--</p>-->
-        <!--<a class="cl-text-white navbar-brand cl-text-bold" href="#">-->
-          <!--Courses-->
-        <!--</a>-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
-<!--</nav>-->
 <nav class="navbar fixed-top nav-blue">
-  <a class="navbar-brand" routerLink="/user">
+  <a class="navbar-brand" routerLink="/student">
     <span class="fa fa-chevron-left text-white"></span>
   </a>
   <div class="navbar-brand text-white font-weight-bold">
     Courses
   </div>
-  <!--<a class="navbar-brand pull-right" routerLink="/user/website/new">-->
-  <!--<span class="fa fa-plus text-white"></span>-->
-  <!--</a>-->
+  <a class="navbar-brand pull-right" routerLink="/student/courses">
+  <span class="fa fa-plus text-white"></span>
+  </a>
 </nav>
 
-<div class="container">
+<div class="container-fluid cl-body-padding">
   <div>
       <div class="form-group cl-8-top">
-        <label for="website-name">Course Name: CS5610</label>
+        <label for="course-name">Course Name: {{course.name + " " + course.title}}</label>
       </div>
       <div class="form-group cl-8-top">
-        <label for="website-name">Rate: </label>
-        <input type="text" id="website-name" placeholder="10">
+        <label for="course-name">Rate: </label>
+        <input [(ngModel)]="updatedCourse.rating" type="text" id="course-name" placeholder="10" ngModel required [ngModelOptions]="{standalone: true}">
       </div>
-      <a class="btn left btn-info btn-block cl-8-top" href="../student-course-list/student-course-list.component.html">Submit</a>
+      <a (click)="updateCourse(updatedCourse)" class="btn left btn-info btn-block cl-8-top" routerLink="/student/courses">Submit</a>
   </div>
 </div>
 
@@ -59,7 +35,5 @@
     </a>
   </div>
 </nav>
-</body>
-</html>
 
 
