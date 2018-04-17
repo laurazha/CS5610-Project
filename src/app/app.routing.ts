@@ -10,8 +10,6 @@ import {RatingComponent} from './views/course/student/rating/rating.component';
 import {StudentCourseListComponent} from './views/course/student/student-course-list/student-course-list.component';
 import {StudentCourseNewComponent} from './views/course/student/student-course-new/student-course-new.component';
 import {TopCoursesComponent} from './views/home/top-courses/top-courses.component';
-<<<<<<< HEAD
-=======
 import {StudentDashboardComponent} from './views/user/student/student-dashboard/student-dashboard.component';
 import {ProfessorDashboardComponent} from './views/user/professor/professor-dashboard/professor-dashboard.component';
 import {AdminDashboardComponent} from './views/user/admin/admin-dashboard/admin-dashboard.component';
@@ -19,7 +17,7 @@ import {StudentEditComponent} from './views/user/admin/student-edit/student-edit
 import {ProfessorEditComponent} from './views/user/admin/professor-edit/professor-edit.component';
 import {StudentNewComponent} from './views/user/admin/student-new/student-new.component';
 import {ProfessorNewComponent} from './views/user/admin/professor-new/professor-new.component';
->>>>>>> refs/remotes/origin/master
+import {AuthGuard} from './services/auth-guard.service';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -32,12 +30,12 @@ const appRoutes: Routes = [
   {path: 'admin/student/new', component: StudentNewComponent},
   {path: 'admin/professor/new', component: ProfessorNewComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'student/courses', component: StudentCourseListComponent},
-  {path: 'professor/courses', component: ProfessorCourseListComponent},
-  {path: 'student/courses/new', component: StudentCourseNewComponent},
-  {path: 'professor/courses/new', component: ProfessorCourseNewComponent},
-  {path: 'professor/courses/edit', component: CourseEditComponent},
-  {path: 'student/courses/rate', component: RatingComponent},
+  {path: 'student/courses', component: StudentCourseListComponent, canActivate: [AuthGuard]},
+  {path: 'professor/courses', component: ProfessorCourseListComponent, canActivate: [AuthGuard]},
+  {path: 'student/courses/new', component: StudentCourseNewComponent, canActivate: [AuthGuard]},
+  {path: 'professor/courses/new', component: ProfessorCourseNewComponent, canActivate: [AuthGuard]},
+  {path: 'professor/courses/:cid', component: CourseEditComponent, canActivate: [AuthGuard]},
+  {path: 'student/courses/:cid', component: RatingComponent, canActivate: [AuthGuard]},
   {path: 'topcourses', component: TopCoursesComponent},
 ];
 

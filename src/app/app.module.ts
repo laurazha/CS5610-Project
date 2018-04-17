@@ -46,9 +46,6 @@ import {StudentNewComponent} from './views/user/admin/student-new/student-new.co
     CourseEditComponent,
     StudentCourseNewComponent,
     RatingComponent,
-<<<<<<< HEAD
-    TopCoursesComponent
-=======
     TopCoursesComponent,
     ProfessorEditComponent,
     ProfessorNewComponent,
@@ -57,7 +54,6 @@ import {StudentNewComponent} from './views/user/admin/student-new/student-new.co
     ProfessorDashboardComponent,
     StudentDashboardComponent
 
->>>>>>> refs/remotes/origin/master
   ],
   imports: [
     BrowserModule,
