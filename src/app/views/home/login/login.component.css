@@ -19,8 +19,7 @@ input.form-control {
 }
 
 .nav-padding {
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-bottom: 70px;
 }
 
 .right-margin {
@@ -42,5 +41,9 @@ input.form-control {
 
 .blue-text {
   color: #337ab7;
+}
+
+.white-bg {
+  background-color: white;
 }
 

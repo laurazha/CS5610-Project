@@ -1,49 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-  <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"/>-->
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-</head>
-
-<body>
 <nav class="navbar fixed-top nav-blue">
-  <a class="navbar-brand" routerLink="/user">
+  <a class="navbar-brand" routerLink="/student">
     <span class="fa fa-chevron-left text-white"></span>
   </a>
   <div class="navbar-brand text-white font-weight-bold">
     Courses
   </div>
-  <a class="navbar-brand pull-right" routerLink="/user/website/new">
+  <a class="navbar-brand pull-right" routerLink="/student">
     <span class="fa fa-plus text-white"></span>
   </a>
 </nav>
 
-<div class="container">
-  <ul class="list-group cl-list-group-borderless">
-    <li class="list-group-item cl-list-item-borderless">
-      <a href="../../../widget/widget-list/widget-list.component.html">Course 1</a>
-      <a class="right" href="../rating/rating.component.html" >Rate this course</a>
-    </li>
-    <li class="list-group-item cl-list-item-borderless">
-      <a href="../../../widget/widget-list/widget-list.component.html">Course 2</a>
-      <a class="right" href="../rating/rating.component.html" >Rate this course</a>
-    </li>
-    <li class="list-group-item cl-list-item-borderless">
-      <a href="../../../widget/widget-list/widget-list.component.html">Course 3</a>
-      <a class="right" href="../rating/rating.component.html" >Rate this course</a>
-    </li>
-    <li class="list-group-item cl-list-item-borderless">
-      <a href="../../../widget/widget-list/widget-list.component.html">Course 4</a>
-      <a class="right" href="../rating/rating.component.html" >Rate this course</a>
-    </li>
-    <li class="list-group-item cl-list-item-borderless">
-      <a href="../student-course-new/student-course-new.component.html">Add Another Course</a>
-    </li>
-  </ul>
-</div>
+<div class="container-fluid cl-body-padding">
 
+  <div class="row extra-padding" *ngFor="let course of courses">
+    <a class="extra-left-padding" routerLink="/user/course/{{course._id}}">{{course.name + " " + course.title}}</a>
+    <a class="pull-right" routerLink="/student/courses/{{course._id}}">Rate this Course</a>
+  </div>
+
+  <div class = "row extra-padding">
+    <a class="extra-left-padding" routerLink="student/courses/new">Add Another Course</a>
+  </div>
+  <!--<ul class="list-group cl-list-group-borderless">-->
+    <!--<li class="list-group-item cl-list-item-borderless">-->
+      <!--<a routerLink="../../../widget/widget-list/widget-list.component.html">Course 1</a>-->
+      <!--<a class="right" href="../rating/rating.component.html" >Rate this course</a>-->
+    <!--</li>-->
+    <!--<li class="list-group-item cl-list-item-borderless">-->
+      <!--<a href="../student-course-new/student-course-new.component.html">Add Another Course</a>-->
+    <!--</li>-->
+  <!--</ul>-->
+</div>
 <nav class="navbar fixed-bottom nav-blue">
   <div class="container-fluid">
     <a routerLink="/"
@@ -56,7 +42,5 @@
     </a>
   </div>
 </nav>
-</body>
-</html>
 
 

@@ -1,6 +1,7 @@
 module.exports = function (app) {
   var userModel = require("../models/user/user.model.server");
   var passport = require('passport');
+  var LocalStrategy = require('passport-local').Strategy;
   var FacebookStrategy = require('passport-facebook').Strategy;
   var bcrypt = require("bcrypt-nodejs");
 
@@ -41,7 +42,6 @@ module.exports = function (app) {
   }
 
   // config local strategy
-  var LocalStrategy = require('passport-local').Strategy;
   passport.use(new LocalStrategy(localStrategy));
 
   function localStrategy(username, password, done) {

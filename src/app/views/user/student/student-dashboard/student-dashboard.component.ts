@@ -18,6 +18,7 @@ export class StudentDashboardComponent implements OnInit {
 
 
   logout() {
+    this.sharedService.user = null;
     this.userService.logout()
       .subscribe(
         (data: any) => this.router.navigate(['/login'])

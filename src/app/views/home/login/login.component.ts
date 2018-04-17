@@ -32,15 +32,17 @@ export class LoginComponent implements OnInit {
     this.userService.login(this.username, this.password)
       .subscribe(
         (user: any) => {
-          this.sharedService.user = user;
-          if (this.sharedService.user.type !== this.type) {
+          if (user.type !== this.type) {
             this.errorFlag = true;
             this.userService.logout();
           } else if (this.type === 'STUDENT') {
+            this.sharedService.user = user;
             this.router.navigate(['/student']);
           } else if (this.type === 'PROFESSOR') {
+            this.sharedService.user = user;
             this.router.navigate(['/professor']);
           } else if (this.type === 'ADMIN') {
+            this.sharedService.user = user;
             this.router.navigate(['/admin']);
           } else {
             this.errorFlag = true;
@@ -56,7 +58,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     // if already logged in, jump to dashboard.
-    if (this.userService.loggedIn() && this.sharedService.user) {
+    if (this.sharedService.user) {
       if (this.sharedService.user.type === 'STUDENT') {
         this.router.navigate(['/student']);
       } else if (this.sharedService.user.type === 'PROFESSOR') {
@@ -66,6 +68,7 @@ export class LoginComponent implements OnInit {
       } else {
         this.errorFlag = true;
         this.userService.logout();
+        this.sharedService.user = null;
       }
     }
   }

@@ -10,51 +10,33 @@
   </a>
 </nav>
 
-<div class="container">
-    <div class="col-xs-4 hidden-xs">
-      <ul class="list-group cl-list-group-borderless">
-        <li class="list-group-item cl-list-item-borderless">
-          <a routerLink="/professor/courses/edit"><span class="fa fa-cog right"></span></a>
-          <a routerLink="/widget/widget-list">Course 1</a>
-        </li>
-        <li class="list-group-item cl-list-item-borderless">
-          <a routerLink="/professor/courses/edit"><span class="fa fa-cog right"></span></a>
-          <a routerLink="/widget/widget-list">Course 2</a>
-        </li>
-        <li class="list-group-item cl-list-item-borderless">
-          <a routerLink="/professor/courses/edit"><span class="fa fa-cog right"></span></a>
-          <a routerLink="/widget/widget-list">Course 3</a>
-        </li>
-        <li class="list-group-item cl-list-item-borderless">
-          <a routerLink="/professor/courses/edit"><span class="fa fa-cog right"></span></a>
-          <a routerLink="/widget/widget-list">Course 4</a>
-        </li>
-      </ul>
-    </div>
+<div class="container-fluid cl-body-padding">
+    <!--<div class="col-xs-4 hidden-xs">-->
+      <!--<ul class="list-group cl-list-group-borderless">-->
+        <!--<li class="list-group-item cl-list-item-borderless">-->
+          <!--<a routerLink="/professor/courses/edit"><span class="fa fa-cog right"></span></a>-->
+          <!--<a routerLink="/widget/widget-list">Course 1</a>-->
+        <!--</li>-->
+      <!--</ul>-->
+    <!--</div>-->
 
     <div class="col-xs-8 borders">
       <form>
         <div class="form-group cl-8-top">
           <div class="container-fluid">
-            <label for="website-name">Course Number</label>
-            <input type="text" class="form-control" id="course-number" placeholder="000">
+            <label for="course-name">Course Name:</label>
+            <input [(ngModel)]= "updatedCourse.name" type="text" class="form-control" id="course-name" value={{updatedCourse.name}} ngModel required [ngModelOptions]="{standalone: true}">
           </div>
         </div>
         <div class="form-group cl-8-top">
           <div class="container-fluid">
-            <label for="website-name">Course Name</label>
-            <input type="text" class="form-control" id="website-name" placeholder="Course">
-          </div>
-        </div>
-        <div class="form-group cl-8-top">
-          <div class="container-fluid">
-            <label for="website-description">Course Description</label>
-            <textarea id="website-description" class="form-control" rows="5" placeholder="This is the description."></textarea>
+            <label for="course-name">Course Title: </label>
+            <input [(ngModel)]= "updatedCourse.title" type="text" class="form-control" id="website-name" value={{updatedCourse.title}} ngModel required [ngModelOptions]="{standalone: true}">
           </div>
         </div>
         <div class="container-padding">
-          <a class="btn btn-success btn-block cl-8-top" href="../professor-course-list/professor-course-list.component.html">Update</a>
-          <a class="btn btn-danger  btn-block cl-8-top" href="../professor-course-list/professor-course-list.component.html">Delete</a>
+          <a (click)="updateCourse(updatedCourse)" class="btn btn-success btn-block cl-8-top">Update</a>
+          <a (click)="deleteCourse()" class="btn btn-danger  btn-block cl-8-top">Delete</a>
         </div>
       </form>
     </div>
