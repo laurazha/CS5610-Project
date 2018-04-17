@@ -8,19 +8,25 @@
   </div>
 </nav>
 
-<div class="container">
+<div class="bg">
+  <div></div>
+  <div class="container">
 
-  <h3>Username: </h3>
-  <br/>
+    <h3>Hello, {{user.username}}</h3>
+    <br/>
 
-  <a class="btn btn-primary btn-block"
-     routerLink="courses">View your courses</a>
-  <br/>
+    <a class="btn btn-primary btn-block"
+       routerLink="courses">View your courses</a>
+    <br/>
 
-  <a class="btn btn-info btn-block"
-     routerLink="../topcourses">View top rated courses</a>
-  <br/>
+    <a class="btn btn-info btn-block"
+       routerLink="../topcourses">View top rated courses</a>
+    <br/>
 
+    <a class="btn btn-danger btn-block">Logout</a>
+    <br/>
+
+  </div>
 </div>
 
 <nav class="navbar fixed-bottom cl-blue-navbar">

@@ -53,7 +53,6 @@ import {StudentNewComponent} from './views/user/admin/student-new/student-new.co
     StudentNewComponent,
     ProfessorDashboardComponent,
     StudentDashboardComponent
-
   ],
   imports: [
     BrowserModule,
