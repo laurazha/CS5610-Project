@@ -47,17 +47,17 @@ export class StudentCourseNewComponent implements OnInit {
       this.errorFlag = true;
       return;
     }
-    if (!this.errorFlag) {
-      this.user.
-      // this.courseService.createCourse(this.userId, course).subscribe(
-      //   (course: any) => {
-      //     this.router.navigate(['../'], {relativeTo: this.activatedRoute});
-      //   },
-      //   (error: any) => {
-      //     // Place an error message here
-      //   }
-      // );
-    }
+    // if (!this.errorFlag) {
+    //   this.user.
+    //   // this.courseService.createCourse(this.userId, course).subscribe(
+    //   //   (course: any) => {
+    //   //     this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+    //   //   },
+    //   //   (error: any) => {
+    //   //     // Place an error message here
+    //   //   }
+    //   // );
+    // }
   }
 
 }
