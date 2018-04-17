@@ -4,6 +4,7 @@ module.exports = function (app) {
   var FacebookStrategy = require('passport-facebook').Strategy;
   var bcrypt = require("bcrypt-nodejs");
 
+  app.get('/api/users', findAllUsers);
   app.post('/api/login', passport.authenticate('local'), login);
   app.post('/api/logout', logout);
   app.post('/api/register', register);
@@ -159,6 +160,11 @@ module.exports = function (app) {
         res.send(status);
       });
   }
+
+  // function findAllUsers(req, res) {
+  //
+  // }
+
 
 };
 

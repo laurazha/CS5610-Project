@@ -91,4 +91,11 @@ export class UserService {
         return response;
       });
   }
+
+  // findAllUsers() {
+  //   return this._http.get(this.baseUrl + '/api/users')
+  //     .map((response: Response) => {
+  //       return response;
+  //     });
+  // }
 }
