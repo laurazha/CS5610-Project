@@ -29,7 +29,8 @@
 }
 
 .right {
-  float: right;
+  position: relative;
+  left: 50%;
 }
 
 .center {

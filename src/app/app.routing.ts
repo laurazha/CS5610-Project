@@ -22,8 +22,8 @@ import {AuthGuard} from './services/auth-guard.service';
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'student', component: StudentDashboardComponent},
-  {path: 'professor', component: ProfessorDashboardComponent},
+  {path: 'student', component: StudentDashboardComponent, canActivate: [AuthGuard]},
+  {path: 'professor', component: ProfessorDashboardComponent, canActivate: [AuthGuard]},
   {path: 'admin', component: AdminDashboardComponent},
   {path: 'admin/student', component: StudentEditComponent},
   {path: 'admin/student/same', component: StudentEditComponent},

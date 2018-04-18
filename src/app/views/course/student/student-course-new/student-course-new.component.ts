@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {SharedService} from '../../../../services/shared.service';
 import {UserService} from '../../../../services/user.service.client';
 import {User} from '../../../../models/user.model.client';
+import {Course} from '../../../../models/course.model.client';
 
 @Component({
   selector: 'app-student-course-new',
@@ -16,8 +17,10 @@ export class StudentCourseNewComponent implements OnInit {
   errorMsg = '';
   userId: String;
   courses: any[];
-  newCourse: any = {};
   user: User;
+  courseName: String;
+  courseId: String;
+  course: Course;
 
   constructor(private courseService: CourseService,
               private activatedRoute: ActivatedRoute,
@@ -39,20 +42,27 @@ export class StudentCourseNewComponent implements OnInit {
     );
   }
 
-  createCourse(course) {
+  createCourse() {
     this.errorFlag = false;
     this.errorMsg = '';
-    if (course.name == null || course.name.trim() === '') {
+    if (this.courseName == null || this.courseName === '') {
       this.errorMsg = 'Course Name cannot be empty';
       this.errorFlag = true;
       return;
     }
     if (!this.errorFlag) {
-      this.courseService.addCourseForStudent(this.userId, course).subscribe(
-        (course: any) => {
-          this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+      this.courseService.findCourseByName(this.courseName).subscribe(
+        (course: Course) => {
+          this.course = course;
+          console.log(this.course);
+          console.log(this.course._id);
         }
       );
+      // this.courseService.addCourseForStudent(this.userId, this.course._id).subscribe(
+      //   (course: any) => {
+      //     this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+      //   }
+      // );
     }
   }
 

@@ -39,7 +39,6 @@ export class ProfessorCourseNewComponent implements OnInit {
       return;
     }
     if (!this.errorFlag) {
-      console.log('it is here');
       this.courseService.createCourse(this.userId, course).subscribe(
         (course: any) => {
           this.router.navigate(['../'], {relativeTo: this.activatedRoute});
