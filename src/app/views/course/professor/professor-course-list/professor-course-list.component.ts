@@ -29,7 +29,7 @@ export class ProfessorCourseListComponent implements OnInit {
   }
 
   delete(course: Course) {
-    this.courseService.deleteCourse(course.courseId).subscribe(
+    this.courseService.deleteCourse(course._id).subscribe(
       (course: any) => {
         // let url: any = '/user/' + this.developerId + '/website';
         // this.router.navigate([url]);

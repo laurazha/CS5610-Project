@@ -4,7 +4,8 @@ module.exports = function(app) {
   app.get("/api/course/:courseId", findCourseById);
   app.put("/api/course/:courseId", updateCourse);
   app.delete("/api/course/:courseId", deleteCourse);
-  app.get("/api/course/course?name=", findCourseByName);
+  // app.get("/api/course/course?name=courseName", findCourseByName);
+  app.get("/api/course/:courseName", findCourseByName);
   app.put("/api/user/:userId/course/:courseId", addCourseForStudent);
 
   //var course_name = req.query.name
@@ -75,7 +76,10 @@ module.exports = function(app) {
   }
 
   function findCourseByName(req, res) {
-    var courseName = req.query.name;
+    console.log("It is in server!");
+    // var courseName = req.query.name;
+    var courseName = req.params.courseName;
+    console.log(courseName);
     courseModel.findCourseByName(courseName).then(
       function (course) {
         res.json(course);

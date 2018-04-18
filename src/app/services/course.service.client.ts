@@ -48,8 +48,14 @@ export class CourseService {
   // }
 
   findCourseByName(courseName: String) {
-
+    const url = this.baseUrl + '/api/course/' + courseName;
+    return this.http.get(url).map(
+      (res: Response) => {
+        return res.json();
+      }
+    );
   }
+
   findCourseById(courseId: String) {
     const url = this.baseUrl + '/api/course/' + courseId;
     return this.http.get(url).map(
