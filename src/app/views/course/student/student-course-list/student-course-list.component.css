@@ -31,3 +31,10 @@
 .right {
   float: right;
 }
+
+.bg {
+  background-image: url("https://mytecharmor.com/wp-content/uploads/2016/07/Website-Background.png");
+  background-repeat: repeat;
+  background-attachment: fixed;
+  height: 100%;
+}
