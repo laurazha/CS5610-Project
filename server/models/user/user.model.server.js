@@ -10,6 +10,8 @@ UserModel.findAllUsers = findAllUsers;
 UserModel.updateUser = updateUser;
 UserModel.deleteUser = deleteUser;
 UserModel.findUserByFacebookId = findUserByFacebookId;
+UserModel.findAllProfessors = findAllProfessors;
+UserModel.findAllStudents = findAllStudents;
 
 module.exports = UserModel;
 
@@ -35,6 +37,14 @@ function findUserByCredentials(username, password){
 
 function findAllUsers() {
   return UserModel.find({});
+}
+
+function findAllProfessors() {
+  return UserModel.find({type: 'PROFESSOR'});
+}
+
+function findAllStudents() {
+  return UserModel.find({type: 'STUDENT'});
 }
 
 function updateUser(userId, user) {

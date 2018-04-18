@@ -22,25 +22,89 @@
 <div class="bg">
   <div></div>
   <div class="container">
-    <input type="text"
-           class="form-control"
-           placeholder="username"/>
-    <input type="text"
-           class="form-control"
-           placeholder="firstName"/>
-    <input type="text"
-           class="form-control"
-           placeholder="lastName"/>
-    <input type="password"
-           class="form-control"
-           placeholder="password"/>
-    <input type="text"
-           class="form-control"
-           placeholder="Email"/>
-    <a class="btn btn-info btn-block"
-       routerLink="../">Add</a>
-    <a class="btn btn-danger btn-block"
-       routerLink="../">Cancel</a>
+
+    <div *ngIf="errorFlag"
+         class="alert alert-danger">
+      {{errorMsg}}
+    </div>
+
+
+    <form (ngSubmit)="CreateProfessor()" #r="ngForm">
+      <label for="username">Username:</label>
+      <input type="text"
+             class="form-control"
+             placeholder="calvin"
+             name="username"
+             id="username"
+             ngModel required #username="ngModel"/>
+      <span class="help-block" *ngIf="!username.valid && username.touched">
+      Please enter username!
+    </span>
+
+      <label for="password">Password:</label>
+      <input type="password"
+             class="form-control"
+             placeholder="password"
+             name="password"
+             id="password"
+             ngModel required #password="ngModel"/>
+      <span class="help-block" *ngIf="!password.valid && password.touched">
+      Please enter password!
+    </span>
+
+      <label for="vpassword">Confirm Password:</label>
+      <input type="password"
+             class="form-control"
+             placeholder="verify password"
+             name="vpassword"
+             id="vpassword"
+             ngModel required #vpassword="ngModel"/>
+      <span class="help-block" *ngIf="!vpassword.valid && vpassword.touched">
+      Please verify password!
+    </span>
+
+      <label for="firstName">FirstName:</label>
+      <input type="text"
+             class="form-control"
+             placeholder="Calvin"
+             name="firstName"
+             id="firstName"
+             ngModel required #firstName="ngModel"/>
+      <span class="help-block" *ngIf="!firstName.valid && firstName.touched">
+      Please enter firstName!
+    </span>
+
+
+      <label for="lastName">LastName:</label>
+      <input type="text"
+             class="form-control"
+             placeholder="Klein"
+             name="lastName"
+             id="lastName"
+             ngModel required #lastName="ngModel"/>
+      <span class="help-block" *ngIf="!lastName.valid && lastName.touched">
+      Please enter LastName!
+    </span>
+
+      <label for="email">Email:</label>
+      <input type="text"
+             class="form-control"
+             placeholder="calvin@gmail.com"
+             name="email"
+             id="email"
+             ngModel required #email="ngModel"/>
+      <span class="help-block" *ngIf="!email.valid && email.touched">
+      Please enter email!
+    </span>
+
+      <button class="btn btn-primary btn-block"
+              type="submit"
+              [disabled]="!r.valid">Add
+      </button>
+      <a class="btn btn-danger btn-block"
+         routerLink="../">Cancel</a>
+    </form>
+
   </div>
 </div>
 

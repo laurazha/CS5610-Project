@@ -11,13 +11,29 @@ import {UserService} from '../../../../services/user.service.client';
 })
 export class ProfessorEditComponent implements OnInit {
   user: User;
+  professors: User[] = [];
 
   constructor(private router: Router,
               private sharedService: SharedService,
               private userService: UserService) { }
 
+  deleteUser(userId) {
+    return this.userService.deleteUserInServer(userId).subscribe(
+      () => {
+        this.router.navigate(['/admin/professor']);
+        this.ngOnInit(); // refresh current page
+      }
+    );
+  }
+
   ngOnInit() {
     this.user = this.sharedService.user;
+
+    this.userService.findAllProfessors().subscribe(
+      (professors: User[]) => {
+        this.professors = professors;
+      }
+    );
   }
 
 }

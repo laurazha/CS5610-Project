@@ -17,12 +17,15 @@ export class UserService {
   baseUrl = environment.baseUrl;
   options = new RequestOptions();
 
-  register(username: String, password: String, type: String) {
+  register(username: String, password: String, type: String, firstName: String, lastName: String, email: String) {
     this.options.withCredentials = true;
     const user = {
       username: username,
       password: password,
-      type: type
+      type: type,
+      firstName: firstName,
+      lastName: lastName,
+      email: email
     };
     return this._http.post(this.baseUrl + '/api/register', user, this.options)
       .map(
@@ -92,10 +95,17 @@ export class UserService {
       });
   }
 
-  // findAllUsers() {
-  //   return this._http.get(this.baseUrl + '/api/users')
-  //     .map((response: Response) => {
-  //       return response;
-  //     });
-  // }
+  findAllProfessors() {
+    return this._http.get(this.baseUrl + '/api/professors')
+      .map((response: Response) => {
+        return response.json();
+      });
+  }
+
+  findAllStudents() {
+    return this._http.get(this.baseUrl + '/api/students')
+      .map((response: Response) => {
+        return response.json();
+      });
+  }
 }

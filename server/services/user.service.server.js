@@ -6,6 +6,8 @@ module.exports = function (app) {
   var bcrypt = require("bcrypt-nodejs");
 
   app.get('/api/users', findAllUsers);
+  app.get('/api/professors', findAllProfessors);
+  app.get('/api/students', findAllStudents);
   app.post('/api/login', passport.authenticate('local'), login);
   app.post('/api/logout', logout);
   app.post('/api/register', register);
@@ -161,10 +163,26 @@ module.exports = function (app) {
       });
   }
 
-  // function findAllUsers(req, res) {
-  //
-  // }
+  function findAllUsers(req, res) {
+    userModel.findAllUsers()
+      .then(function (users) {
+        res.send(users);
+      })
+  }
 
+  function findAllProfessors(req, res) {
+    userModel.findAllProfessors()
+      .then(function (professors) {
+        res.send(professors);
+      });
+  }
+
+  function findAllStudents(req, res) {
+    userModel.findAllStudents()
+      .then(function (students) {
+        res.send(students);
+      });
+  }
 
 };
 

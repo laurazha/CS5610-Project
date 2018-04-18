@@ -17,6 +17,7 @@ export class ProfessorDashboardComponent implements OnInit {
               private router: Router) { }
 
   logout() {
+    this.sharedService.user = null;
     this.userService.logout()
       .subscribe(
         (data: any) => this.router.navigate(['/login'])

@@ -68,7 +68,7 @@
       <label for="username">Username:</label>
       <input type="text"
              class="form-control"
-             placeholder="username"
+             placeholder="calvin"
              name="username"
              id="username"
              ngModel required #username="ngModel"/>
@@ -96,6 +96,40 @@
              ngModel required #vpassword="ngModel"/>
       <span class="help-block" *ngIf="!vpassword.valid && vpassword.touched">
       Please verify password!
+    </span>
+
+      <label for="firstName">FirstName:</label>
+      <input type="text"
+             class="form-control"
+             placeholder="Calvin"
+             name="firstName"
+             id="firstName"
+             ngModel required #firstName="ngModel"/>
+      <span class="help-block" *ngIf="!firstName.valid && firstName.touched">
+      Please enter firstName!
+    </span>
+
+
+      <label for="lastName">LastName:</label>
+      <input type="text"
+             class="form-control"
+             placeholder="Klein"
+             name="lastName"
+             id="lastName"
+             ngModel required #lastName="ngModel"/>
+      <span class="help-block" *ngIf="!lastName.valid && lastName.touched">
+      Please enter LastName!
+    </span>
+
+      <label for="email">Email:</label>
+      <input type="text"
+             class="form-control"
+             placeholder="calvin@gmail.com"
+             name="email"
+             id="email"
+             ngModel required #email="ngModel"/>
+      <span class="help-block" *ngIf="!email.valid && email.touched">
+      Please enter email!
     </span>
 
       <button class="btn btn-primary btn-block"

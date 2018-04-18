@@ -26,6 +26,7 @@ const appRoutes: Routes = [
   {path: 'professor', component: ProfessorDashboardComponent},
   {path: 'admin', component: AdminDashboardComponent},
   {path: 'admin/student', component: StudentEditComponent},
+  {path: 'admin/student/same', component: StudentEditComponent},
   {path: 'admin/professor', component: ProfessorEditComponent},
   {path: 'admin/student/new', component: StudentNewComponent},
   {path: 'admin/professor/new', component: ProfessorNewComponent},

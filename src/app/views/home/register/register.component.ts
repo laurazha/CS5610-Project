@@ -16,6 +16,9 @@ export class RegisterComponent implements OnInit {
   username: string;
   password: string;
   vpassword: string;
+  firstName: string;
+  lastName: string;
+  email: string;
   type = 'STUDENT';
 
   errorFlag = false;
@@ -29,8 +32,12 @@ export class RegisterComponent implements OnInit {
     this.username = this.registerForm.value.username;
     this.password = this.registerForm.value.password;
     this.vpassword = this.registerForm.value.vpassword;
+    this.firstName = this.registerForm.value.firstName;
+    this.lastName = this.registerForm.value.lastName;
+    this.email = this.registerForm.value.email;
+
     if (this.vpassword === this.password) {
-      this.userService.register(this.username, this.password, this.type).subscribe(
+      this.userService.register(this.username, this.password, this.type, this.firstName, this.lastName, this.email).subscribe(
         (user: User) => {
           this.errorFlag = false;
           if (!user.type) {   // facebook user
