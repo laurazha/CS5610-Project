@@ -7,6 +7,10 @@ var UserSchema = mongoose.Schema({
   lastName: String,
   email: String,
   type: {type: String, enum: ['STUDENT', 'PROFESSOR', 'ADMIN']},
+  courses: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'CourseModel'
+  }],
   dateCreated: {type: Date, default: Date.now},
   facebook: {
     id:    String,

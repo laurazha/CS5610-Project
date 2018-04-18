@@ -1,21 +1,22 @@
 var mongoose = require('mongoose');
 var CourseSchema = require('./course.schema.server');
-var Course = mongoose.model('Course', CourseSchema);
+var CourseModel = mongoose.model('CourseModel', CourseSchema);
 var UserModel = require("../user/user.model.server");
 
-Course.createCourseForUser = createCourseForUser;
-Course.findAllCoursesForUser = findAllCoursesForUser;
-Course.findCourseById = findCourseById;
-Course.findCourseByName = findCourseByName;
-Course.updateCourse = updateCourse;
-Course.deleteCourse = deleteCourse;
-Course.addCourseForStudent = addCourseForStudent;
+CourseModel.createCourseForUser = createCourseForUser;
+CourseModel.findAllCoursesForUser = findAllCoursesForUser;
+CourseModel.findCourseById = findCourseById;
+CourseModel.findCourseByName = findCourseByName;
+CourseModel.updateCourse = updateCourse;
+CourseModel.deleteCourse = deleteCourse;
+CourseModel.addCourseForStudent = addCourseForStudent;
 
-module.exports = Course;
+
+module.exports = CourseModel;
 
 function createCourseForUser(userId, course) {
   course._user = userId;
-  return Course.create(course)
+  return CourseModel.create(course)
     .then(function(responseCourse){
       UserModel.findUserById(userId)
         .then(function(user){
@@ -27,7 +28,7 @@ function createCourseForUser(userId, course) {
 }
 
 function addCourseForStudent(userId, courseId) {
-  return Course.findCourseById(courseId)
+  return CourseModel.findCourseById(courseId)
     .then(function(responseCourse){
       UserModel.findUserById(userId)
         .then(function(user){
@@ -39,22 +40,22 @@ function addCourseForStudent(userId, courseId) {
 }
 
 function findAllCoursesForUser(userId) {
-  return Course.find({ _user: userId });
+  return CourseModel.find({ "_user": userId }).populate('_user').exec();
 }
 
 function findCourseById(courseId) {
-  return Course.findById(courseId);
+  return CourseModel.findById(courseId);
 }
 
 
 function findCourseByName(courseName) {
-  return Course.find({name: courseName});
+  return CourseModel.findOne({name: courseName});
 }
 
 function updateCourse(courseId, course) {
-  return Course.findByIdAndUpdate(courseId, course);
+  return CourseModel.findByIdAndUpdate(courseId, course);
 }
 
 function deleteCourse(courseId) {
-  return Course.findByIdAndRemove(courseId);
+  return CourseModel.findByIdAndRemove(courseId);
 }

@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var CourseSchema = mongoose.Schema({
   _user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
+    ref: 'UserModel'
   },
   name: String,
   description: String,

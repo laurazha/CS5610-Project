@@ -54,15 +54,14 @@ export class StudentCourseNewComponent implements OnInit {
       this.courseService.findCourseByName(this.courseName).subscribe(
         (course: Course) => {
           this.course = course;
-          console.log(this.course);
-          console.log(this.course._id);
+          this.courseId = course._id
+          this.courseService.addCourseForStudent(this.userId, this.course._id).subscribe(
+            (course: any) => {
+              this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+            }
+          );
         }
       );
-      // this.courseService.addCourseForStudent(this.userId, this.course._id).subscribe(
-      //   (course: any) => {
-      //     this.router.navigate(['../'], {relativeTo: this.activatedRoute});
-      //   }
-      // );
     }
   }
 

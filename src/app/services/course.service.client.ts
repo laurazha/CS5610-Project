@@ -31,9 +31,11 @@ export class CourseService {
   }
 
   findCoursesByUser(userId: String) {
+    console.log(userId);
     const url = this.baseUrl + '/api/user/' + userId + '/course';
     return this.http.get(url).map(
       (res: Response) => {
+        console.log(res.json());
         return res.json();
       }
     );
@@ -48,7 +50,7 @@ export class CourseService {
   // }
 
   findCourseByName(courseName: String) {
-    const url = this.baseUrl + '/api/course/' + courseName;
+    const url = this.baseUrl + '/api/coursename/' + courseName;
     return this.http.get(url).map(
       (res: Response) => {
         return res.json();
