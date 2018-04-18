@@ -10,6 +10,7 @@
   </a>
 </nav>
 
+<div class="bg">
 <div class="container-fluid cl-body-padding">
   <!--<ul class="list-group cl-list-group-borderless">-->
     <!--<li class="list-group-item cl-list-item-borderless">-->
@@ -25,12 +26,13 @@
   <div class="row extra-padding" *ngFor="let course of courses">
     <a class="extra-left-padding" routerLink="/user/courses/{{course._id}}">{{course.name + " " + course.title}}</a>
     <a class="center" routerLink="/professor/courses/{{course._id}}">Grade this Course</a>
-    <a (click)="delete(course)" class="btn btn-danger">Delete</a>
+    <a (click)="delete(course)" class="pull-right btn btn-danger ">Delete</a>
   </div>
 
   <div class = "row extra-padding">
     <a class="extra-left-padding" routerLink="professor/courses/new">Add Another Course</a>
   </div>
+</div>
 </div>
 
 <nav class="navbar fixed-bottom nav-blue">

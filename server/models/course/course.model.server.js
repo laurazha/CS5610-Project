@@ -9,6 +9,7 @@ Course.findCourseById = findCourseById;
 Course.findCourseByName = findCourseByName;
 Course.updateCourse = updateCourse;
 Course.deleteCourse = deleteCourse;
+Course.addCourseForStudent = addCourseForStudent;
 
 module.exports = Course;
 
@@ -20,6 +21,18 @@ function createCourseForUser(userId, course) {
         .then(function(user){
         user.courses.push(responseCourse);
         return user.save();
+      });
+      return responseCourse;
+    });
+}
+
+function addCourseForStudent(userId, courseId) {
+  return Course.findCourseById(courseId)
+    .then(function(responseCourse){
+      UserModel.findUserById(userId)
+        .then(function(user){
+          user.courses.push(responseCourse);
+          return user.save();
       });
       return responseCourse;
     });

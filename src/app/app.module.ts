@@ -29,6 +29,7 @@ import {ProfessorNewComponent} from './views/user/admin/professor-new/professor-
 import {ProfessorEditComponent} from './views/user/admin/professor-edit/professor-edit.component';
 import {StudentEditComponent} from './views/user/admin/student-edit/student-edit.component';
 import {StudentNewComponent} from './views/user/admin/student-new/student-new.component';
+import {CourseService} from './services/course.service.client';
 
 
 @NgModule({
@@ -60,7 +61,7 @@ import {StudentNewComponent} from './views/user/admin/student-new/student-new.co
     FormsModule,
     HttpModule
   ],
-  providers: [UserService, SharedService, AuthGuard],
+  providers: [UserService, CourseService, SharedService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
