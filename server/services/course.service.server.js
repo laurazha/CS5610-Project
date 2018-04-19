@@ -5,7 +5,7 @@ module.exports = function(app) {
   app.put("/api/course/:courseId", updateCourse);
   app.delete("/api/course/:courseId", deleteCourse);
   // app.get("/api/course/course?name=courseName", findCourseByName);
-  app.get("/api/course/:courseName", findCourseByName);
+  app.get("/api/coursename/:courseName", findCourseByName);
   app.put("/api/user/:userId/course/:courseId", addCourseForStudent);
 
   //var course_name = req.query.name
@@ -48,10 +48,11 @@ module.exports = function(app) {
   }
 
   function findAllCoursesForUser(req, res) {
-    var userId = req.params.userId;
+    var userId = req.params['userId'];
     courseModel.findAllCoursesForUser(userId).then(
-      function (course) {
-        res.json(course);
+      function (courses) {
+        console.log(courses);
+        res.json(courses);
       },
       function (err) {
         res.sendStatus(400).send(err);
@@ -76,7 +77,6 @@ module.exports = function(app) {
   }
 
   function findCourseByName(req, res) {
-    console.log("It is in server!");
     // var courseName = req.query.name;
     var courseName = req.params.courseName;
     console.log(courseName);

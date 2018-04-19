@@ -20,9 +20,11 @@ export class StudentCourseListComponent implements OnInit {
 
   ngOnInit() {
     this.userId = this.sharedService.user['_id'];
-    return this.courseService.findCoursesByUser(this.userId).subscribe(
+    console.log(this.userId);
+    this.courseService.findCoursesByUser(this.userId).subscribe(
       (courses: Course[]) => {
         this.courses = courses;
+        console.log(this.courses.length);
       }
     );
   }
