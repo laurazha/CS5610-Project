@@ -31,11 +31,9 @@ export class CourseService {
   }
 
   findCoursesByUser(userId: String) {
-    console.log(userId);
     const url = this.baseUrl + '/api/user/' + userId + '/course';
     return this.http.get(url).map(
       (res: Response) => {
-        console.log(res.json());
         return res.json();
       }
     );
