@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../../../../models/user.model.client';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {SharedService} from '../../../../services/shared.service';
 import {UserService} from '../../../../services/user.service.client';
 
@@ -15,8 +15,8 @@ export class ProfessorEditComponent implements OnInit {
 
   constructor(private router: Router,
               private sharedService: SharedService,
-              private userService: UserService) { }
-
+              private userService: UserService,
+              private activatedRoute: ActivatedRoute) { }
   deleteUser(userId) {
     return this.userService.deleteUserInServer(userId).subscribe(
       () => {
@@ -26,9 +26,25 @@ export class ProfessorEditComponent implements OnInit {
     );
   }
 
-  ngOnInit() {
-    this.user = this.sharedService.user;
+  findUserById(userId) {
+    console.log(userId);
+    return this.userService.findUserById(userId).subscribe(
+      (user: User) => {
+        this.user = user;
+        console.log(this.user);
+      }
+    );
+  }
 
+  updateUser(userId, changed_user) {
+    return this.userService.updateUserInServer(userId, changed_user).subscribe(
+      () => {
+        location.reload();
+      }
+    );
+  }
+
+  ngOnInit() {
     this.userService.findAllProfessors().subscribe(
       (professors: User[]) => {
         this.professors = professors;

@@ -153,6 +153,11 @@ module.exports = function (app) {
       .then(function (user) {
         res.json(user);
       });
+    // var userId = req.params['userId'];
+    // var user = req.body;
+    // userModel.updateUser(user).then(function(status) {
+    //   res.send(status);
+    // });
   }
 
   function deleteUser(req, res) {

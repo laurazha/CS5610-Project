@@ -16,6 +16,7 @@ export class AdminDashboardComponent implements OnInit {
               private sharedService: SharedService,
               public router: Router) { }
   logout() {
+    this.sharedService.user = null;
     this.userService.logout()
       .subscribe(
         (data: any) => this.router.navigate(['/login'])

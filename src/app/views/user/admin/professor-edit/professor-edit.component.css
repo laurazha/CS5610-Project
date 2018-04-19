@@ -100,3 +100,12 @@ a:hover{
   background-attachment: fixed;
   height: 100%;
 }
+
+.text-align {
+  text-align: center;
+}
+
+.actions {
+  white-space: nowrap;
+  text-align: center;
+}
