@@ -5,7 +5,7 @@
   <div class="navbar-brand text-white font-weight-bold">
     Courses
   </div>
-  <a class="navbar-brand pull-right" routerLink="/student">
+  <a class="navbar-brand pull-right" routerLink="/student/courses/new">
     <span class="fa fa-plus text-white"></span>
   </a>
 </nav>
@@ -13,22 +13,21 @@
 <div class="bg">
   <div class="container">
     <div class="row extra-padding" *ngFor="let course of courses">
-      <a class="extra-left-padding" routerLink="/user/course/{{course._id}}">{{course.name + " " + course.title}}</a>
-      <a class="pull-right" routerLink="/student/courses/{{course._id}}">Rate this Course</a>
+      <div class = "container">
+        <div class = "row">
+          <div class = "col">
+            <a class="extra-left-padding" routerLink="/user/course/{{course._id}}">{{course.name + " " + course.title}}</a>
+          </div>
+          <div class="col">
+            <a class="pull-right" routerLink="/student/courses/{{course._id}}">Rate this Course</a>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class = "row extra-padding">
       <a class="extra-left-padding" routerLink="/student/courses/new">Add Another Course</a>
     </div>
-    <!--<ul class="list-group cl-list-group-borderless">-->
-      <!--<li class="list-group-item cl-list-item-borderless">-->
-        <!--<a routerLink="../../../widget/widget-list/widget-list.component.html">Course 1</a>-->
-        <!--<a class="right" href="../rating/rating.component.html" >Rate this course</a>-->
-      <!--</li>-->
-      <!--<li class="list-group-item cl-list-item-borderless">-->
-        <!--<a href="../student-course-new/student-course-new.component.html">Add Another Course</a>-->
-      <!--</li>-->
-    <!--</ul>-->
   </div>
 </div>
 

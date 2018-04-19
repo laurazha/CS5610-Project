@@ -12,13 +12,20 @@
 
 <div class="bg">
 <div class="container">
-  <div>
-    <div class="form-group cl-8-top">
-      <label for="course-name">Course Name:</label>
+  <div class="row">
+    <div class="col">
+      <div class="form-group cl-8-top">
+        <label for="course-name">Course Name:</label>
+      </div>
+    </div>
+    <div class="col">
       <input [(ngModel)]="courseName" type="text" id="course-name" placeholder="10" ngModel required [ngModelOptions]="{standalone: true}">
     </div>
-    <a (click)="createCourse()" class="btn left btn-info btn-block cl-8-top">Submit</a>
   </div>
+  <div *ngIf="errorFlag" class="alert alert-primary" role="alert">
+    {{errorMsg}}
+  </div>
+  <a (click)="createCourse()" class="btn left btn-info btn-block cl-8-top">Submit</a>
 </div>
 </div>
 

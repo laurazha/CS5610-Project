@@ -30,16 +30,28 @@ export class ProfessorCourseNewComponent implements OnInit {
     );
   }
 
-  createCourse(course) {
+  createCourse() {
     this.errorFlag = false;
     this.errorMsg = '';
-    if (course.name == null || course.name.trim() === '') {
+    if (this.newCourse.name == null || this.newCourse.name.trim() === '') {
       this.errorMsg = 'Course Name cannot be empty';
       this.errorFlag = true;
       return;
     }
+
+    this.courseService.findCourseByName(this.newCourse.name).subscribe(
+      (course: any) => {
+        this.newCourse = course;
+      }
+    );
+
+    if (this.newCourse != null) {
+        this.errorFlag = true;
+        this.errorMsg = 'This course has already exists!';
+    }
+
     if (!this.errorFlag) {
-      this.courseService.createCourse(this.userId, course).subscribe(
+      this.courseService.createCourse(this.userId, this.newCourse).subscribe(
         (course: any) => {
           this.router.navigate(['../'], {relativeTo: this.activatedRoute});
         },

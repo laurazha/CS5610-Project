@@ -7,6 +7,7 @@ module.exports = function(app) {
   // app.get("/api/course/course?name=courseName", findCourseByName);
   app.get("/api/coursename/:courseName", findCourseByName);
   app.put("/api/user/:userId/course/:courseId", addCourseForStudent);
+  app.get("/api/topcourses", topCourses);
 
   //var course_name = req.query.name
   // courseMode.findByName(course_name).then();
@@ -51,7 +52,6 @@ module.exports = function(app) {
     var userId = req.params['userId'];
     courseModel.findAllCoursesForUser(userId).then(
       function (courses) {
-        console.log(courses);
         res.json(courses);
       },
       function (err) {
@@ -79,7 +79,6 @@ module.exports = function(app) {
   function findCourseByName(req, res) {
     // var courseName = req.query.name;
     var courseName = req.params.courseName;
-    console.log(courseName);
     courseModel.findCourseByName(courseName).then(
       function (course) {
         res.json(course);
@@ -119,6 +118,17 @@ module.exports = function(app) {
       }
     );
   }
-}
+
+  function topCourses(req, res) {
+    courseModel.topCourses().then(
+      function (courses) {
+        res.json(courses);
+      },
+      function (err) {
+        res.sendStatus(400).send(err);
+      }
+    );
+  }
+};
 
 

@@ -31,11 +31,9 @@ export class CourseService {
   }
 
   findCoursesByUser(userId: String) {
-    console.log(userId);
     const url = this.baseUrl + '/api/user/' + userId + '/course';
     return this.http.get(url).map(
       (res: Response) => {
-        console.log(res.json());
         return res.json();
       }
     );
@@ -79,6 +77,15 @@ export class CourseService {
   deleteCourse(courseId: String) {
     const url = this.baseUrl + '/api/course/' + courseId;
     return this.http.delete(url).map(
+      (res: Response) => {
+        return res.json();
+      }
+    );
+  }
+
+  topCourses() {
+    const url = this.baseUrl + '/api/topcourses/';
+    return this.http.get(url).map(
       (res: Response) => {
         return res.json();
       }
