@@ -15,7 +15,10 @@ export class StudentEditComponent implements OnInit {
 
   constructor(private router: Router,
               private sharedService: SharedService,
-              private userService: UserService) { }
+              private userService: UserService) {
+    this.user = new User(null, null, null, null, null, null, null);
+    this.students = [];
+  }
 
   deleteUser(userId) {
     return this.userService.deleteUserInServer(userId).subscribe(
@@ -26,6 +29,21 @@ export class StudentEditComponent implements OnInit {
     );
   }
 
+  findUserById(userId) {
+    return this.userService.findUserById(userId).subscribe(
+      (user: User) => {
+        this.user = user;
+      }
+    );
+  }
+
+  updateUser(userId, changed_user) {
+    return this.userService.updateUserInServer(userId, changed_user).subscribe(
+      () => {
+        window.location.reload();
+      }
+    );
+  }
 
   ngOnInit() {
     this.user = this.sharedService.user;

@@ -30,6 +30,7 @@ import {ProfessorEditComponent} from './views/user/admin/professor-edit/professo
 import {StudentEditComponent} from './views/user/admin/student-edit/student-edit.component';
 import {StudentNewComponent} from './views/user/admin/student-new/student-new.component';
 import {CourseService} from './services/course.service.client';
+import { AdminEditComponent } from './views/user/admin/admin-edit/admin-edit.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import {CourseService} from './services/course.service.client';
     StudentEditComponent,
     StudentNewComponent,
     ProfessorDashboardComponent,
-    StudentDashboardComponent
+    StudentDashboardComponent,
+    AdminEditComponent
   ],
   imports: [
     BrowserModule,

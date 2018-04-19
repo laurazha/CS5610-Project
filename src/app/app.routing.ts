@@ -18,6 +18,7 @@ import {ProfessorEditComponent} from './views/user/admin/professor-edit/professo
 import {StudentNewComponent} from './views/user/admin/student-new/student-new.component';
 import {ProfessorNewComponent} from './views/user/admin/professor-new/professor-new.component';
 import {AuthGuard} from './services/auth-guard.service';
+import {AdminEditComponent} from './views/user/admin/admin-edit/admin-edit.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -25,6 +26,7 @@ const appRoutes: Routes = [
   {path: 'student', component: StudentDashboardComponent, canActivate: [AuthGuard]},
   {path: 'professor', component: ProfessorDashboardComponent, canActivate: [AuthGuard]},
   {path: 'admin', component: AdminDashboardComponent, canActivate: [AuthGuard]},
+  {path: 'admin/edit', component: AdminEditComponent, canActivate: [AuthGuard]},
   {path: 'admin/student', component: StudentEditComponent, canActivate: [AuthGuard]},
   {path: 'admin/professor', component: ProfessorEditComponent, canActivate: [AuthGuard]},
   {path: 'admin/student/new', component: StudentNewComponent, canActivate: [AuthGuard]},

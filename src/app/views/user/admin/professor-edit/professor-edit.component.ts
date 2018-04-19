@@ -12,11 +12,17 @@ import {UserService} from '../../../../services/user.service.client';
 export class ProfessorEditComponent implements OnInit {
   user: User;
   professors: User[] = [];
+  modalFlag: boolean;
 
   constructor(private router: Router,
               private sharedService: SharedService,
               private userService: UserService,
-              private activatedRoute: ActivatedRoute) { }
+              private activatedRoute: ActivatedRoute) {
+
+    this.user = new User(null, null, null, null, null, null, null);
+    this.professors = [];
+  }
+
   deleteUser(userId) {
     return this.userService.deleteUserInServer(userId).subscribe(
       () => {
@@ -27,19 +33,20 @@ export class ProfessorEditComponent implements OnInit {
   }
 
   findUserById(userId) {
-    console.log(userId);
-    return this.userService.findUserById(userId).subscribe(
+    this.userService.findUserById(userId).subscribe(
       (user: User) => {
         this.user = user;
-        console.log(this.user);
       }
     );
+    if (this.user) {
+      this.modalFlag = true;
+    }
   }
 
   updateUser(userId, changed_user) {
     return this.userService.updateUserInServer(userId, changed_user).subscribe(
       () => {
-        location.reload();
+        this.ngOnInit();
       }
     );
   }
