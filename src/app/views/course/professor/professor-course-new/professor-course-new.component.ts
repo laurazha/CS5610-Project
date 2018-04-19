@@ -41,15 +41,14 @@ export class ProfessorCourseNewComponent implements OnInit {
 
     this.courseService.findCourseByName(this.newCourse.name).subscribe(
       (course: any) => {
-        if (course != null) {
-          this.errorFlag = true;
-          console.log(this.errorFlag);
-          this.errorMsg = 'This course has already exists!';
-        }
+        this.newCourse = course;
       }
     );
 
-    console.log(this.errorFlag);
+    if (this.newCourse != null) {
+        this.errorFlag = true;
+        this.errorMsg = 'This course has already exists!';
+    }
 
     if (!this.errorFlag) {
       this.courseService.createCourse(this.userId, this.newCourse).subscribe(

@@ -5,9 +5,6 @@
   <div class="navbar-brand text-white font-weight-bold">
     Courses
   </div>
-  <!--<a class="navbar-brand pull-right" routerLink="/user/website/new">-->
-    <!--<span class="fa fa-plus text-white"></span>-->
-  <!--</a>-->
 </nav>
 
 <div class="bg">
@@ -35,7 +32,7 @@
     <div *ngIf="errorFlag" class="alert alert-primary" role="alert">
       {{errorMsg}}
     </div>
-    <a (click)="createCourse(newCourse)" class="btn left btn-info btn-block cl-8-top">Submit</a>
+    <a (click)="createCourse()" class="btn left btn-info btn-block cl-8-top">Submit</a>
 
   </div>
 </div>

@@ -50,6 +50,18 @@ export class StudentCourseNewComponent implements OnInit {
       this.errorFlag = true;
       return;
     }
+
+    this.courseService.findCourseByName(this.courseName).subscribe(
+      (course: any) => {
+        this.course = course;
+      }
+    );
+
+    if (this.course == null) {
+      this.errorFlag = true;
+      this.errorMsg = 'This course does not exist!';
+    }
+
     if (!this.errorFlag) {
       this.courseService.findCourseByName(this.courseName).subscribe(
         (course: Course) => {
