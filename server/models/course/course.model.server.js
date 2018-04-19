@@ -10,6 +10,7 @@ CourseModel.findCourseByName = findCourseByName;
 CourseModel.updateCourse = updateCourse;
 CourseModel.deleteCourse = deleteCourse;
 CourseModel.addCourseForStudent = addCourseForStudent;
+CourseModel.topCourses = topCourses;
 
 
 module.exports = CourseModel;
@@ -58,4 +59,9 @@ function updateCourse(courseId, course) {
 
 function deleteCourse(courseId) {
   return CourseModel.findByIdAndRemove(courseId);
+}
+
+function topCourses() {
+  return CourseModel.find({})
+    .sort({rating: -1}).exec();
 }

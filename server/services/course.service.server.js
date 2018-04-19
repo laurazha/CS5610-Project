@@ -7,6 +7,7 @@ module.exports = function(app) {
   // app.get("/api/course/course?name=courseName", findCourseByName);
   app.get("/api/coursename/:courseName", findCourseByName);
   app.put("/api/user/:userId/course/:courseId", addCourseForStudent);
+  app.get("/api/topcourses", topCourses);
 
   //var course_name = req.query.name
   // courseMode.findByName(course_name).then();
@@ -117,6 +118,17 @@ module.exports = function(app) {
       }
     );
   }
-}
+
+  function topCourses(req, res) {
+    courseModel.topCourses().then(
+      function (courses) {
+        res.json(courses);
+      },
+      function (err) {
+        res.sendStatus(400).send(err);
+      }
+    );
+  }
+};
 
 
