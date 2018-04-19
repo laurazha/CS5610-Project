@@ -82,5 +82,14 @@ export class CourseService {
       }
     );
   }
+
+  topCourses() {
+    const url = this.baseUrl + '/api/topcourses/';
+    return this.http.get(url).map(
+      (res: Response) => {
+        return res.json();
+      }
+    );
+  }
 }
 
