@@ -54,7 +54,7 @@ export class ProfessorCourseNewComponent implements OnInit {
           this.errorMsg = 'This course has already existed!';
         } else {
           this.errorFlag = false;
-          this.newCourse = new Course(undefined, this.courseName, undefined, this.courseTitle, undefined, undefined, undefined);
+          this.newCourse = new Course(undefined, this.courseName, undefined, this.courseTitle, 0, 0, 0);
           this.courseService.createCourse(this.userId, this.newCourse).subscribe(
             (course: any) => {
               this.router.navigate(['../'], {relativeTo: this.activatedRoute});

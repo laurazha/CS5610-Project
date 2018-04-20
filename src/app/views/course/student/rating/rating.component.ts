@@ -23,18 +23,20 @@ export class RatingComponent implements OnInit {
   constructor(private courseService: CourseService,
               private activatedRoute: ActivatedRoute,
               private sharedService: SharedService,
-              private router: Router) { }
+              private router: Router) {
+    this.course = new Course(null, null, null, null, 0, 0, 0);
+  }
 
   ngOnInit() {
     this.getUser();
     this.activatedRoute.params.subscribe(
       (params: any) => {
-        this.courseService.findCourses(this.userId).subscribe(
-          (courses: any[]) => {
-            this.courses = courses;
+        this.courseId = params['cid'];
+        this.courseService.findCourseById(this.courseId).subscribe(
+          (course: Course) => {
+            this.course = course;
           }
         );
-        this.courseId = params['cid'];
     });
   }
 
@@ -46,8 +48,18 @@ export class RatingComponent implements OnInit {
     this.courseService.findCourseById(this.courseId).subscribe(
       (course: Course) => {
           this.course = course;
-          this.course.rating = ((this.course.sumRating.valueOf() + this.rating.valueOf()) / this.course.numRating.valueOf());
-          this.courseService.updateCourse(this.courseId, this.course).subscribe(
+          console.log(this.rating);
+          let sumRating = new Number(this.course.sumRating);
+          let numRating = new Number(this.course.numRating);
+          numRating = numRating.valueOf() + 1;
+          this.course.numRating = numRating;
+          let first = sumRating.valueOf();
+          let second = this.rating.valueOf();
+          this.course.sumRating = Number.parseInt(first.toString()) + Number.parseInt(second.toString());
+          console.log(this.course.sumRating);
+          this.course.rating = this.course.sumRating.valueOf() / (numRating.valueOf());
+          console.log(this.course.rating);
+        this.courseService.updateCourse(this.courseId, this.course).subscribe(
             (course: any) => {
               // this.updatedCourse = course;
               this.router.navigate(['../'], {relativeTo: this.activatedRoute});
