@@ -7,8 +7,7 @@ export class Course {
   sumRating: Number;
   numRating: Number;
 
-  constructor(id: String, name: String, description: String,
-              title: String, rating: Number, sumRating: Number, numRating: Number) {
+  constructor(id: String, name: String, description: String, title: String, rating: Number, sumRating: Number, numRating: Number) {
     this._id = id;
     this.name = name;
     this.description = description;

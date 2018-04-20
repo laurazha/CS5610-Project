@@ -50,25 +50,21 @@ export class ProfessorCourseNewComponent implements OnInit {
       (course: any) => {
         this.newCourse = course;
         if (this.newCourse != null) {
-          console.log(this.newCourse);
           this.errorFlag = true;
-          console.log(this.errorFlag);
           this.errorMsg = 'This course has already existed!';
+        } else {
+          this.errorFlag = false;
+          this.newCourse = new Course(undefined, this.courseName, undefined, this.courseTitle, undefined, undefined, undefined);
+          this.courseService.createCourse(this.userId, this.newCourse).subscribe(
+            (course: any) => {
+              this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+            },
+            (error: any) => {
+              // Place an error message here
+            }
+          );
         }
       }
     );
-
-    console.log(this.errorFlag);
-    console.log(this.newCourse);
-    if (!this.errorFlag) {
-      this.courseService.createCourse(this.userId, this.newCourse).subscribe(
-        (course: any) => {
-          this.router.navigate(['../'], {relativeTo: this.activatedRoute});
-        },
-        (error: any) => {
-          // Place an error message here
-        }
-      );
-    }
   }
 }
