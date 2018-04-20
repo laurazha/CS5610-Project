@@ -23,6 +23,7 @@ import {WidgetViewComponent} from './views/widget/widget-view/widget-view.compon
 import {WidgetListComponent} from './views/widget/widget-list/widget-list.component';
 import {WidgetChooserComponent} from './views/widget/widget-chooser/widget-chooser.component';
 import {WidgetEditComponent} from './views/widget/widget-edit/widget-edit.component';
+import {FlickrImageSearchComponent} from './views/widget/widget-edit/widget-image/flickr-image-search/flickr-image-search.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -47,7 +48,7 @@ const appRoutes: Routes = [
   {path: 'professor/courses/:cid/widget', component: WidgetListComponent, canActivate: [AuthGuard]},
   {path: 'professor/courses/:cid/widget/new', component: WidgetChooserComponent, canActivate: [AuthGuard]},
   {path: 'professor/courses/:cid/widget/:wgid', component: WidgetEditComponent, canActivate: [AuthGuard]},
-  // {path: 'professor/courses/:cid/widget/:wgid/flickr', component: , canActivate: [AuthGuard]},
+  {path: 'professor/courses/:cid/widget/:wgid/flickr', component: FlickrImageSearchComponent, canActivate: [AuthGuard]}
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);

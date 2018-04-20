@@ -11,7 +11,7 @@ import {UserService} from '../../../../services/user.service.client';
 })
 export class ProfessorEditComponent implements OnInit {
   user: User;
-  professors: User[] = [];
+  professors: User[];
   modalFlag: boolean;
 
   constructor(private router: Router,
@@ -26,7 +26,7 @@ export class ProfessorEditComponent implements OnInit {
   deleteUser(userId) {
     return this.userService.deleteUserInServer(userId).subscribe(
       () => {
-        this.router.navigate(['/admin/professor']);
+        // this.router.navigate(['/admin/professor']);
         this.ngOnInit(); // refresh current page
       }
     );

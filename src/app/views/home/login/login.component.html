@@ -73,9 +73,6 @@
              name="username"
              id="username"
              ngModel required #username="ngModel"/>
-      <span class="help-block" *ngIf="!username.valid && username.touched">
-      Please enter username!
-    </span>
 
       <label for="password">Password:</label>
       <input type="password"
@@ -84,9 +81,6 @@
              name="password"
              id="password"
              ngModel required #password="ngModel"/>
-      <span class="help-block" *ngIf="!password.valid && password.touched">
-      Please enter password!
-    </span>
 
       <button class="btn btn-primary btn-block"
               type="submit"

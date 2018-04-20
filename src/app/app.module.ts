@@ -42,6 +42,8 @@ import {SortableDirective} from './directives/sortable.directive';
 import {SafePipe} from './pipes/safe.pipe';
 import {WidgetService} from './services/widget.service.client';
 import { QuillEditorModule } from 'ngx-quill-editor';
+import { FlickrImageSearchComponent } from './views/widget/widget-edit/widget-image/flickr-image-search/flickr-image-search.component';
+import {FlickrService} from './services/flickr.service.client';
 
 
 @NgModule({
@@ -76,6 +78,7 @@ import { QuillEditorModule } from 'ngx-quill-editor';
     WidgetViewComponent,
     SafePipe,
     SortableDirective,
+    FlickrImageSearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -84,7 +87,7 @@ import { QuillEditorModule } from 'ngx-quill-editor';
     HttpModule,
     QuillEditorModule
   ],
-  providers: [UserService, CourseService, SharedService, AuthGuard, WidgetService],
+  providers: [UserService, CourseService, SharedService, AuthGuard, WidgetService, FlickrService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
