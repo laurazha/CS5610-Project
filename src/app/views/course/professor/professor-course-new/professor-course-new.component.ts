@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {CourseService} from '../../../../services/course.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
 import {SharedService} from '../../../../services/shared.service';
+import {NgForm} from '@angular/forms';
+import {Course} from '../../../../models/course.model.client';
 
 @Component({
   selector: 'app-professor-course-new',
@@ -9,12 +11,14 @@ import {SharedService} from '../../../../services/shared.service';
   styleUrls: ['./professor-course-new.component.css']
 })
 export class ProfessorCourseNewComponent implements OnInit {
-
+  @ViewChild('f') courseForm: NgForm;
   errorFlag: boolean;
   errorMsg = '';
   userId: String;
   courses: any[];
-  newCourse: any = {};
+  newCourse: Course;
+  courseName: String;
+  courseTitle: String;
 
   constructor(private courseService: CourseService,
               private activatedRoute: ActivatedRoute,
@@ -33,23 +37,29 @@ export class ProfessorCourseNewComponent implements OnInit {
   createCourse() {
     this.errorFlag = false;
     this.errorMsg = '';
-    if (this.newCourse.name == null || this.newCourse.name.trim() === '') {
+    this.courseName = this.courseForm.value.name;
+    this.courseTitle = this.courseForm.value.title;
+
+    if (this.courseName == null || this.courseName.trim() === '') {
       this.errorMsg = 'Course Name cannot be empty';
       this.errorFlag = true;
       return;
     }
 
-    this.courseService.findCourseByName(this.newCourse.name).subscribe(
+    this.courseService.findCourseByName(this.courseName).subscribe(
       (course: any) => {
         this.newCourse = course;
+        if (this.newCourse != null) {
+          console.log(this.newCourse);
+          this.errorFlag = true;
+          console.log(this.errorFlag);
+          this.errorMsg = 'This course has already existed!';
+        }
       }
     );
 
-    if (this.newCourse != null) {
-        this.errorFlag = true;
-        this.errorMsg = 'This course has already exists!';
-    }
-
+    console.log(this.errorFlag);
+    console.log(this.newCourse);
     if (!this.errorFlag) {
       this.courseService.createCourse(this.userId, this.newCourse).subscribe(
         (course: any) => {

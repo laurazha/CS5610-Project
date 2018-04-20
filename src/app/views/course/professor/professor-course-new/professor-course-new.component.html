@@ -9,31 +9,32 @@
 
 <div class="bg">
   <div class="container">
-    <div class="row">
-      <div class="col">
-        <div class="form-group cl-8-top">
-          <label for="course-name">Course Name:</label>
+    <form (ngSubmit)="createCourse()" #f="ngForm" >
+      <div class="row">
+        <div class="col">
+          <div class="form-group cl-8-top">
+            <label for="course-name">Course Name:</label>
+          </div>
+        </div>
+        <div class="col">
+          <input type="text" id="course-name" placeholder="10" ngModel required name="name" #name="ngModel" />
         </div>
       </div>
-      <div class="col">
-        <input [(ngModel)]="newCourse.name" type="text" id="course-name" placeholder="10" ngModel required [ngModelOptions]="{standalone: true}">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <div class="form-group cl-8-top">
-          <label for="course-title">Course Title:</label>
+      <div class="row">
+        <div class="col">
+          <div class="form-group cl-8-top">
+            <label for="course-title">Course Title:</label>
+          </div>
+        </div>
+        <div class="col">
+          <input type="text" id="course-title" placeholder="10" ngModel required name="title" #title="ngModel"/>
         </div>
       </div>
-      <div class="col">
-        <input [(ngModel)]="newCourse.title" type="text" id="course-title" placeholder="10" ngModel required [ngModelOptions]="{standalone: true}">
+      <div *ngIf="errorFlag" class="alert alert-primary" role="alert">
+        {{errorMsg}}
       </div>
-    </div>
-    <div *ngIf="errorFlag" class="alert alert-primary" role="alert">
-      {{errorMsg}}
-    </div>
-    <a (click)="createCourse()" class="btn left btn-info btn-block cl-8-top">Submit</a>
-
+      <button class="btn left btn-info btn-block cl-8-top" type="submit" [disabled]="!f.valid">Submit</button>
+    </form>
   </div>
 </div>
 
