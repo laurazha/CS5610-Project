@@ -31,6 +31,17 @@ import {StudentEditComponent} from './views/user/admin/student-edit/student-edit
 import {StudentNewComponent} from './views/user/admin/student-new/student-new.component';
 import {CourseService} from './services/course.service.client';
 import { AdminEditComponent } from './views/user/admin/admin-edit/admin-edit.component';
+import { WidgetChooserComponent } from './views/widget/widget-chooser/widget-chooser.component';
+import { WidgetEditComponent } from './views/widget/widget-edit/widget-edit.component';
+import { WidgetHeaderComponent } from './views/widget/widget-edit/widget-header/widget-header.component';
+import { WidgetHtmlComponent } from './views/widget/widget-edit/widget-html/widget-html.component';
+import { WidgetImageComponent } from './views/widget/widget-edit/widget-image/widget-image.component';
+import { WidgetYoutubeComponent } from './views/widget/widget-edit/widget-youtube/widget-youtube.component';
+import { WidgetViewComponent } from './views/widget/widget-view/widget-view.component';
+import {SortableDirective} from './directives/sortable.directive';
+import {SafePipe} from './pipes/safe.pipe';
+import {WidgetService} from './services/widget.service.client';
+import { QuillEditorModule } from 'ngx-quill-editor';
 
 
 @NgModule({
@@ -43,7 +54,6 @@ import { AdminEditComponent } from './views/user/admin/admin-edit/admin-edit.com
     RegisterComponent,
     StudentCourseListComponent,
     ProfessorCourseListComponent,
-    WidgetListComponent,
     ProfessorCourseNewComponent,
     CourseEditComponent,
     StudentCourseNewComponent,
@@ -55,15 +65,26 @@ import { AdminEditComponent } from './views/user/admin/admin-edit/admin-edit.com
     StudentNewComponent,
     ProfessorDashboardComponent,
     StudentDashboardComponent,
-    AdminEditComponent
+    AdminEditComponent,
+    WidgetListComponent,
+    WidgetChooserComponent,
+    WidgetEditComponent,
+    WidgetHeaderComponent,
+    WidgetHtmlComponent,
+    WidgetImageComponent,
+    WidgetYoutubeComponent,
+    WidgetViewComponent,
+    SafePipe,
+    SortableDirective,
   ],
   imports: [
     BrowserModule,
     routing,
     FormsModule,
-    HttpModule
+    HttpModule,
+    QuillEditorModule
   ],
-  providers: [UserService, CourseService, SharedService, AuthGuard],
+  providers: [UserService, CourseService, SharedService, AuthGuard, WidgetService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

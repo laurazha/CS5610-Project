@@ -1,18 +1,15 @@
 module.exports = function(app) {
   app.post("/api/user/:userId/course", createCourse);
-  app.get("/api/user/course", findAllCoursesForUser);
+  app.get("/api/user/:userId/course", findAllCoursesForUser);
   app.get("/api/course/:courseId", findCourseById);
   app.put("/api/course/:courseId", updateCourse);
   app.delete("/api/course/:courseId", deleteCourse);
-  // app.get("/api/course/course?name=courseName", findCourseByName);
   app.get("/api/coursename/:courseName", findCourseByName);
   // app.put("/api/user/:userId/course/:courseId", addCourseForStudent);
   app.get("/api/topcourses", topCourses);
 
-  //var course_name = req.query.name
-  // courseMode.findByName(course_name).then();
-
   var courseModel = require("../models/course/course.model.server");
+  var userModel = require("../models/user/user.model.server");
 
   function createCourse(req, res) {
     var userId = req.params.userId;
@@ -49,8 +46,8 @@ module.exports = function(app) {
   }
 
   function findAllCoursesForUser(req, res) {
-    //var userId = req.params['userId'];
-    courseModel.findAllCoursesForUser().then(
+    var userId = req.params['userId'];
+    userModel.findAllCoursesForUser().then(
       function (courses) {
         res.json(courses);
       },

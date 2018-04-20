@@ -7,10 +7,7 @@ var CourseSchema = mongoose.Schema({
   rating: Number,
   sumRating: Number,
   numRating: Number,
-  // widgets: [{
-  //  type: mongoose.Schema.Type.ObjectId,
-  //  ref: 'Widget'
-  // }],
+  widgets: [WidgetSchema],
   dateCreated: {
     type: Date,
     default: Date.now

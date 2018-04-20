@@ -19,10 +19,15 @@ import {StudentNewComponent} from './views/user/admin/student-new/student-new.co
 import {ProfessorNewComponent} from './views/user/admin/professor-new/professor-new.component';
 import {AuthGuard} from './services/auth-guard.service';
 import {AdminEditComponent} from './views/user/admin/admin-edit/admin-edit.component';
+import {WidgetViewComponent} from './views/widget/widget-view/widget-view.component';
+import {WidgetListComponent} from './views/widget/widget-list/widget-list.component';
+import {WidgetChooserComponent} from './views/widget/widget-chooser/widget-chooser.component';
+import {WidgetEditComponent} from './views/widget/widget-edit/widget-edit.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
   {path: 'student', component: StudentDashboardComponent, canActivate: [AuthGuard]},
   {path: 'professor', component: ProfessorDashboardComponent, canActivate: [AuthGuard]},
   {path: 'admin', component: AdminDashboardComponent, canActivate: [AuthGuard]},
@@ -31,7 +36,6 @@ const appRoutes: Routes = [
   {path: 'admin/professor', component: ProfessorEditComponent, canActivate: [AuthGuard]},
   {path: 'admin/student/new', component: StudentNewComponent, canActivate: [AuthGuard]},
   {path: 'admin/professor/new', component: ProfessorNewComponent, canActivate: [AuthGuard]},
-  {path: 'register', component: RegisterComponent},
   {path: 'student/courses', component: StudentCourseListComponent, canActivate: [AuthGuard]},
   {path: 'professor/courses', component: ProfessorCourseListComponent, canActivate: [AuthGuard]},
   {path: 'student/courses/new', component: StudentCourseNewComponent, canActivate: [AuthGuard]},
@@ -39,6 +43,11 @@ const appRoutes: Routes = [
   {path: 'professor/courses/:cid', component: CourseEditComponent, canActivate: [AuthGuard]},
   {path: 'student/courses/:cid', component: RatingComponent, canActivate: [AuthGuard]},
   {path: 'topcourses', component: TopCoursesComponent},
+  {path: 'student/courses/:cid/widget', component: WidgetViewComponent, canActivate: [AuthGuard]},
+  {path: 'professor/courses/:cid/widget', component: WidgetListComponent, canActivate: [AuthGuard]},
+  {path: 'professor/courses/:cid/widget/new', component: WidgetChooserComponent, canActivate: [AuthGuard]},
+  {path: 'professor/courses/:cid/widget/:wgid', component: WidgetEditComponent, canActivate: [AuthGuard]},
+  // {path: 'professor/courses/:cid/widget/:wgid/flickr', component: , canActivate: [AuthGuard]},
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);

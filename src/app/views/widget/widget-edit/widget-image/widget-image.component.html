@@ -1,0 +1,78 @@
+<nav class="navbar nav-grey fixed-top">
+  <div class="container-fluid row">
+    <div class="pull-left">
+      <a routerLink="../"
+         class="navbar-text right-margin">
+        <span class="fa fa-angle-left"></span>
+      </a>
+      <a routerLink="./"
+         class="navbar-text">
+        Edit Widget
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="container container-padding">
+  <form>
+    <div *ngIf="errorFlag"
+         class="alert alert-danger">
+      {{errorMsg}}
+    </div>
+    <label for="WidgetImageName">Widget Name</label>
+    <input id="WidgetImageName"
+           name="WidgetImageName"
+           type="text"
+           class="form-control"
+           placeholder="name"
+           [(ngModel)]="widget._id"
+           disabled/>
+    <label for="WidgetImageURL">URL</label>
+    <input id="WidgetImageURL"
+           name="WidgetImageURL"
+           type="url"
+           class="form-control"
+           placeholder="URL"
+           [(ngModel)]="widget.url"/>
+  </form>
+
+  <label for="WidgetImageUpload">Upload</label>
+  <form ngNoForm action="{{baseUrl}}/api/upload" method="post" enctype="multipart/form-data">
+    <input name="myFile"
+           id="WidgetImageUpload"
+           placeholder="No file chosen"
+           type="file" class="form-control"/>
+    <input name="widgetId" value="{{widgetId}}" style="display: none"/>
+    <input name="courseId" value="{{courseId}}" style="display: none"/>
+    <button type="submit" class="btn btn-block btn-primary">Upload Image</button>
+  </form>
+  <p></p>
+
+  <a class="btn btn-warning btn-block"
+     routerLink="flickr">
+    Search on Flickr
+  </a>
+  <a class="btn btn-success btn-block"
+     (click)="updateWidget()">
+    Update
+  </a>
+  <a class="btn btn-danger btn-block"
+     (click)="deleteWidget()">
+    Delete
+  </a>
+</div>
+
+<nav class="navbar fixed-bottom nav-grey">
+  <div class="container-fluid">
+    <a routerLink="/"
+       class="navbar-text pull-left">
+      <span class="fa fa-home"></span>
+    </a>
+    <a routerLink="/professor"
+       class="navbar-text pull-right">
+      <span class="fa fa-user"></span>
+    </a>
+  </div>
+</nav>
+
+

@@ -20,16 +20,8 @@
 </nav>
 
 <div class="container container-padding">
-  <ul class="ul-no-style" appSortable (newIndexes)="reorderWidgets($event)">
+  <ul class="ul-no-style">
     <li class="widget" *ngFor="let wid of widgets">
-      <div class="widget-icons">
-        <a routerLink="./" class="pull-right black-text">
-          <span class="fa fa-bars"></span>
-        </a>
-        <a routerLink="./{{wid._id}}" class="pull-right">
-          <span class="fa fa-cog"></span>
-        </a>
-      </div>
       <div [ngSwitch]="wid.type">
         <div *ngSwitchCase="'HEADER'">
           <div [ngSwitch]="wid.size">
@@ -78,7 +70,7 @@
        class="navbar-text pull-left">
       <span class="fa fa-home"></span>
     </a>
-    <a routerLink="/professor"
+    <a routerLink="/student"
        class="navbar-text pull-right">
       <span class="fa fa-user"></span>
     </a>

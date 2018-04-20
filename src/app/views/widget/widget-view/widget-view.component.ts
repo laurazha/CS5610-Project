@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import {Widget} from '../../../models/widget.model.client';
-import {WidgetService} from '../../../services/widget.service.client';
-import {ActivatedRoute} from '@angular/router';
 import {Course} from '../../../models/course.model.client';
+import {Widget} from '../../../models/widget.model.client';
+import {ActivatedRoute} from '@angular/router';
 import {CourseService} from '../../../services/course.service.client';
+import {WidgetService} from '../../../services/widget.service.client';
 
 @Component({
-  selector: 'app-widget-list',
-  templateUrl: './widget-list.component.html',
-  styleUrls: ['./widget-list.component.css']
+  selector: 'app-widget-view',
+  templateUrl: './widget-view.component.html',
+  styleUrls: ['./widget-view.component.css']
 })
-export class WidgetListComponent implements OnInit {
+export class WidgetViewComponent implements OnInit {
   widgets: Widget[];
   courseId: string;
   course: Course;
@@ -35,13 +35,6 @@ export class WidgetListComponent implements OnInit {
         (error: any) => console.log(error)
       );
     });
-  }
-
-  reorderWidgets(indexes) {
-    this.widgetService.reorderWidgetsInServer(this.courseId, indexes).subscribe(
-      () => {},
-      (error: any) => console.log(error)
-    );
   }
 
 }

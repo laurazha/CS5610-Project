@@ -16,9 +16,7 @@ export class TopCoursesComponent implements OnInit {
   //   {name: 'CS5002', title: 'Data Structure', rating: 9.0, numRating: 6},
   //   {name: 'CS5003', title: 'OOD', rating: 8.2, numRating: 2}];
 
-  constructor(private courseService: CourseService,
-              private route: ActivatedRoute,
-              private sharedService: SharedService) {
+  constructor(private courseService: CourseService) {
     this.courses = [];
   }
 

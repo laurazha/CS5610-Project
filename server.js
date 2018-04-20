@@ -14,6 +14,9 @@ const baseUrl = 'http://localhost:4200';
 // npm install passport-facebook --save
 // npm install passport-local --save
 
+// npm install ngx-quill-editor --save
+// npm install multer --save
+
 
 const express = require('express');
 const path = require('path');
