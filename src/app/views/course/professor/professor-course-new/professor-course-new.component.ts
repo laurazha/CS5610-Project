@@ -27,7 +27,7 @@ export class ProfessorCourseNewComponent implements OnInit {
 
   ngOnInit() {
     this.userId = this.sharedService.user['_id'];
-    this.courseService.findCoursesByUser(this.userId).subscribe(
+    this.courseService.findCourses(this.userId).subscribe(
       (courses: any[]) => {
         this.courses = courses;
       }

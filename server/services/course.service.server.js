@@ -5,6 +5,7 @@ module.exports = function(app) {
   app.delete("/api/course/:courseId", deleteCourse);
   app.get("/api/coursename/:courseName", findCourseByName);
   app.get("/api/topcourses", topCourses);
+  app.get("/api/user/courses/:userId", findCourses);
 
   var courseModel = require("../models/course/course.model.server");
 
@@ -88,6 +89,20 @@ module.exports = function(app) {
         res.json(courses);
       },
       function (err) {
+        res.sendStatus(400).send(err);
+      }
+    );
+  }
+
+  function findCourses(req, res) {
+    var userId = req.params["userId"];
+    courseModel.findAllCoursesForUser().then(
+      function(courses) {
+        console.log("it is in server!");
+        console.log(courses);
+        res.json(courses);
+      },
+      function(err) {
         res.sendStatus(400).send(err);
       }
     );

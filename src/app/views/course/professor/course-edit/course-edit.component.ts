@@ -32,7 +32,7 @@ export class CourseEditComponent implements OnInit {
     this.getUser();
     this.activatedRoute.params.subscribe(
       (params: any) => {
-        this.courseService.findCoursesByUser(this.userId).subscribe(
+        this.courseService.findCourses(this.userId).subscribe(
           (courses: any[]) => {
             this.courses = courses;
           });
