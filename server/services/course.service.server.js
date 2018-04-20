@@ -1,15 +1,12 @@
 module.exports = function(app) {
   app.post("/api/user/:userId/course", createCourse);
-  app.get("/api/user/:userId/course", findAllCoursesForUser);
   app.get("/api/course/:courseId", findCourseById);
   app.put("/api/course/:courseId", updateCourse);
   app.delete("/api/course/:courseId", deleteCourse);
   app.get("/api/coursename/:courseName", findCourseByName);
-  // app.put("/api/user/:userId/course/:courseId", addCourseForStudent);
   app.get("/api/topcourses", topCourses);
 
   var courseModel = require("../models/course/course.model.server");
-  var userModel = require("../models/user/user.model.server");
 
   function createCourse(req, res) {
     var userId = req.params.userId;
@@ -21,35 +18,6 @@ module.exports = function(app) {
         } else {
           res.sendStatus(400).send("Something went wrong");
         }
-      },
-      function (err) {
-        res.sendStatus(400).send(err);
-      }
-    );
-  }
-
-  function addCourseForStudent(req, res) {
-    var userId = req.params.userId;
-    var courseId = req.params.courseId;
-    courseModel.addCourseForStudent(userId, courseId).then(
-      function(course) {
-        if(course) {
-          res.json(course);
-        } else {
-          res.sendStatus(400).send("Something went wrong");
-        }
-      },
-      function (err) {
-        res.sendStatus(400).send(err);
-      }
-    );
-  }
-
-  function findAllCoursesForUser(req, res) {
-    var userId = req.params['userId'];
-    courseModel.findAllCoursesForUser(userId).then(
-      function (courses) {
-        res.json(courses);
       },
       function (err) {
         res.sendStatus(400).send(err);
@@ -74,7 +42,6 @@ module.exports = function(app) {
   }
 
   function findCourseByName(req, res) {
-    // var courseName = req.query.name;
     var courseName = req.params.courseName;
     courseModel.findCourseByName(courseName).then(
       function (course) {
@@ -84,7 +51,6 @@ module.exports = function(app) {
         res.sendStatus(400).send(err);
       }
     );
-
   }
 
   function updateCourse(req, res) {

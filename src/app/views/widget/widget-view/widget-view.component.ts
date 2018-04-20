@@ -17,7 +17,10 @@ export class WidgetViewComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private widgetService: WidgetService,
-              private courseService: CourseService) { }
+              private courseService: CourseService) {
+    this.widgets = [];
+    this.course = new Course(null, null, null, null, null, null, null);
+  }
 
   ngOnInit() {
     this.route.params.subscribe(params => {

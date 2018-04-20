@@ -1,4 +1,5 @@
 var mongoose = require("mongoose");
+var CourseSchema = require("../course/course.schema.server");
 
 var UserSchema = mongoose.Schema({
   username: {type: String, required: true},
@@ -7,10 +8,7 @@ var UserSchema = mongoose.Schema({
   lastName: String,
   email: String,
   type: {type: String, enum: ['STUDENT', 'PROFESSOR', 'ADMIN']},
-  courses: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'CourseModel'
-  }],
+  courses: [CourseSchema],
   dateCreated: {type: Date, default: Date.now},
   facebook: {
     id:    String,

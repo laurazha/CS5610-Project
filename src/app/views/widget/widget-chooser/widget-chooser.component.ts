@@ -18,7 +18,9 @@ export class WidgetChooserComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private widgetService: WidgetService,
-    private courseService: CourseService) { }
+    private courseService: CourseService) {
+    this.course = new Course(null, null, null, null, null, null, null);
+  }
 
   ngOnInit() {
     this.route.params.subscribe(params => {

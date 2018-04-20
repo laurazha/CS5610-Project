@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Http, RequestOptions, Response } from '@angular/http';
 import 'rxjs/Rx';
 import { environment } from '../../environments/environment';
-import { Router } from '@angular/router';
 import { Course } from '../models/course.model.client';
 
 @Injectable()
@@ -21,15 +20,6 @@ export class CourseService {
     );
   }
 
-  // addCourseForStudent(userId: String, courseId: String) {
-  //   const url = this.baseUrl + '/api/user/' + userId + '/course/' + courseId;
-  //   return this.http.put(url, userId).map(
-  //     (res: Response) => {
-  //       return res.json();
-  //     }
-  //   );
-  // }
-
   findCoursesByUser(userId: String) {
     const url = this.baseUrl + '/api/user/' + userId + '/course';
     return this.http.get(url).map(
@@ -38,14 +28,6 @@ export class CourseService {
       }
     );
   }
-  // findCourseByCourseId(courseId: String) {
-  //   const url = this.baseUrl + '/api/course/' + courseId + '/course';
-  //   return this.http.get(url).map(
-  //     (res: Response) => {
-  //       return res.json();
-  //     }
-  //   );
-  // }
 
   findCourseByName(courseName: String) {
     const url = this.baseUrl + '/api/coursename/' + courseName;

@@ -14,8 +14,10 @@ module.exports = function (app) {
   app.post('/api/register', register);
   app.post('/api/loggedin', loggedin);
   app.get("/api/user/:userId", findUserById);
-  // app.get("/api/user/:userId/course", findCoursesByUser);
-  app.put("/api/user/:userId/course/:courseId", addCourseForStudent);
+
+  app.get("/api/user/:userId/course", findCoursesByUser);
+  app.put("/api/student/:userId/course/:courseId", addCourseForStudent);
+
   app.put("/api/user/:userId", updateUser);
   app.delete("/api/user/:userId", deleteUser);
   app.get('/facebook/login', passport.authenticate('facebook', {scope: 'email'}));
@@ -132,7 +134,7 @@ module.exports = function (app) {
 
   function logout(req, res) {
     req.logOut();
-    res.send(200);
+    res.sendStatus(200);
   }
 
   function loggedin(req, res) {
@@ -147,31 +149,34 @@ module.exports = function (app) {
       })
   }
 
-  // function findCoursesByUser(req, res) {
-  //   var userId = req.params["userId"];
-  //   userModel.findCoursesById(userId).then(
-  //     function(courses) {
-  //       res.json(courses);
-  //     },
-  //     function(err) {
-  //       res.sendStatus(400).send(err);
-  //     }
-  //   );
-  // }
+  function findCoursesByUser(req, res) {
+    var userId = req.params["userId"];
+    userModel.findUserById(userId).then(
+      function(user) {
+        res.json(user.courses);
+      },
+      function(err) {
+        res.sendStatus(400).send(err);
+      }
+    );
+  }
 
   function addCourseForStudent(req, res) {
     var userId = req.params["userId"];
     var courseId = req.params["courseId"];
-    userModel.addCourseForStudent(userId, courseId).then(
+
+    userModel.findUserById(userId).then(
       function(user) {
-        if(user) {
-          res.json(user);
-        } else {
-          res.sendStatus(400).send("Something went wrong");
-        }
+        courseModel.findCourseById(courseId)
+          .then(
+            function(course) {
+              user.courses.push(course);
+              userModel.updateUser(userId, user).then();
+            }
+          );
+        res.json(user);
       }
     );
-
   }
 
   function updateUser(req, res) {
@@ -190,7 +195,7 @@ module.exports = function (app) {
     var userId = req.params["userId"];
     userModel.deleteUser(userId)
       .then(function (status) {
-        res.send(status);
+        res.sendStatus(status);
       });
   }
 
@@ -217,13 +222,5 @@ module.exports = function (app) {
 
 };
 
-/*
-  var users = [
-    {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonderland"  },
-    {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
-    {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
-    {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
-  ];
-  */
 
 

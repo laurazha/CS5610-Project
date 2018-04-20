@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var WidgetSchema = require("../widget/widget.schema.server");
 
 var CourseSchema = mongoose.Schema({
   name: String,

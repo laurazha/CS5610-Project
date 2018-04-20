@@ -24,18 +24,9 @@ export class StudentCourseListComponent implements OnInit {
     this.userId = this.sharedService.user['_id'];
     this.userService.findCoursesByUser(this.userId).subscribe(
   (courses: Course[]) => {
-          console.log(this.userId);
           this.courses = courses;
-          console.log(this.courses.length);
         }
     );
-
-    // this.courseService.findCoursesByUser(this.userId).subscribe(
-    //   (courses: Course[]) => {
-    //     this.courses = courses;
-    //     console.log(this.courses.length);
-    //   }
-    // );
   }
 
 }

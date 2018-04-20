@@ -69,9 +69,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     // if already logged in, jump to dashboard.
     if (this.sharedService.user) {
-      console.log('ngOnInit() says user logged in');
       if (this.sharedService.user.type === 'STUDENT') {
-        console.log('ngOnInit() says student');
         this.router.navigate(['/student']);
       } else if (this.sharedService.user.type === 'PROFESSOR') {
         this.router.navigate(['/professor']);

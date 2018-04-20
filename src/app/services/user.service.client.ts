@@ -84,7 +84,6 @@ export class UserService {
   findCoursesByUser(userId: String) {
     return this._http.get(this.baseUrl + '/api/user/' + userId + '/course').
       map((response: Response) => {
-        console.log(response.json());
         return response.json();
     });
   }
