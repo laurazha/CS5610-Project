@@ -70,6 +70,6 @@ function addCourseForStudent(userId, courseId) {
     });
 }
 
-function findCoursesByUser(userId) {
-  return UserModel.find({});
-}
+// function findCoursesByUser(userId) {
+//   return UserModel.find({});
+// }
