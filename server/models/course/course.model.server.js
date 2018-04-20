@@ -41,7 +41,7 @@ function addCourseForStudent(userId, courseId) {
     });
 }
 
-function findAllCoursesForUser() {
+function findAllCoursesForUser(userId) {
   // return CourseModel.find({ "_user": userId }).populate('_user').exec();
   return CourseModel.find();
 }

@@ -47,7 +47,7 @@ module.exports = function(app) {
 
   function findAllCoursesForUser(req, res) {
     var userId = req.params['userId'];
-    userModel.findAllCoursesForUser().then(
+    courseModel.findAllCoursesForUser(userId).then(
       function (courses) {
         res.json(courses);
       },

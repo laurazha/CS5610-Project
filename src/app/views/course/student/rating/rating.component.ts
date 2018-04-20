@@ -18,11 +18,13 @@ export class RatingComponent implements OnInit {
   course: Course;
   updatedCourse: any = {};
   newRating: String;
+  rating: Number;
 
   constructor(private courseService: CourseService,
               private activatedRoute: ActivatedRoute,
               private sharedService: SharedService,
               private router: Router) { }
+
   ngOnInit() {
     this.getUser();
     this.activatedRoute.params.subscribe(
@@ -41,11 +43,17 @@ export class RatingComponent implements OnInit {
   }
 
   updateCourse(course) {
-    this.courseService.updateCourse(this.courseId, course).subscribe(
-      (course: any) => {
-        this.updatedCourse = course;
-        this.router.navigate(['../'], {relativeTo: this.activatedRoute});
-      },
+    this.courseService.findCourseById(this.courseId).subscribe(
+      (course: Course) => {
+          this.course = course;
+          this.course.rating = ((this.course.sumRating.valueOf() + this.rating.valueOf()) / this.course.numRating.valueOf());
+          this.courseService.updateCourse(this.courseId, this.course).subscribe(
+            (course: any) => {
+              // this.updatedCourse = course;
+              this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+            },
+          );
+      }
     );
   }
 }
