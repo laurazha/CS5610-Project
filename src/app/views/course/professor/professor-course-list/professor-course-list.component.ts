@@ -3,6 +3,7 @@ import {Course} from '../../../../models/course.model.client';
 import {CourseService} from '../../../../services/course.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
 import {SharedService} from '../../../../services/shared.service';
+import {UserService} from '../../../../services/user.service.client';
 
 @Component({
   selector: 'app-professor-course-list',
@@ -17,11 +18,12 @@ export class ProfessorCourseListComponent implements OnInit {
   constructor(private courseService: CourseService,
               private activatedRoute: ActivatedRoute,
               private sharedService: SharedService,
+              private userService: UserService,
               private router: Router) { }
 
   ngOnInit() {
     this.userId = this.sharedService.user['_id'];
-    return this.courseService.findCoursesByUser(this.userId).subscribe(
+    return this.courseService.findCourses(this.userId).subscribe(
       (courses: Course[]) => {
         this.courses = courses;
       }
