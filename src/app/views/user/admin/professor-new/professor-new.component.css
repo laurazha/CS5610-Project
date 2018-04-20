@@ -100,3 +100,7 @@ a:hover{
   background-attachment: fixed;
   height: 100%;
 }
+
+.nav-padding {
+  padding-bottom: 70px;
+}
