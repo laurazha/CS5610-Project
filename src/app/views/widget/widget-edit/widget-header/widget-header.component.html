@@ -1,12 +1,12 @@
-<nav class="navbar nav-grey fixed-top">
+<nav class="navbar cl-blue-navbar fixed-top">
   <div class="container-fluid row">
     <div class="pull-left">
       <a routerLink="../"
-         class="navbar-text right-margin">
+         class="navbar-text cl-text-white right-margin">
         <span class="fa fa-angle-left"></span>
       </a>
       <a routerLink="./"
-         class="navbar-text">
+         class="navbar-text cl-text-white">
         Edit Widget
       </a>
     </div>
@@ -38,24 +38,32 @@
          placeholder="3"
          [(ngModel)]="widget.size"/>
 
-  <a class="btn btn-success btn-block"
+  <!--<a class="btn btn-success btn-block"-->
+     <!--(click)="updateWidget()">-->
+    <!--Update-->
+  <!--</a>-->
+  <button class="btn btn-success btn-block"
      (click)="updateWidget()">
     Update
-  </a>
-  <a class="btn btn-danger btn-block"
-     (click)="deleteWidget()">
+  </button>
+  <!--<a class="btn btn-danger btn-block"-->
+     <!--(click)="deleteWidget()">-->
+    <!--Delete-->
+  <!--</a>-->
+  <button class="btn btn-danger btn-block" (click)="deleteWidget(widget)">
     Delete
-  </a>
+  </button>
+
 </div>
 
-<nav class="navbar fixed-bottom nav-grey">
+<nav class="navbar fixed-bottom cl-blue-navbar">
   <div class="container-fluid">
     <a routerLink="/"
-       class="navbar-text pull-left">
+       class="navbar-text cl-text-white pull-left">
       <span class="fa fa-home"></span>
     </a>
     <a routerLink="/professor"
-       class="navbar-text pull-right">
+       class="navbar-text cl-text-white pull-right">
       <span class="fa fa-user"></span>
     </a>
   </div>
