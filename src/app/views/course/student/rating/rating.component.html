@@ -18,9 +18,9 @@
       </div>
       <div class="form-group cl-8-top">
         <label for="course-name">Rate: </label>
-        <input [(ngModel)]="updatedCourse.rating" type="text" id="course-name" placeholder="10" ngModel required [ngModelOptions]="{standalone: true}">
+        <input [(ngModel)]="rating" type="text" id="course-name" placeholder="10" ngModel required [ngModelOptions]="{standalone: true}">
       </div>
-      <a (click)="updateCourse(updatedCourse)" class="btn left btn-info btn-block cl-8-top" routerLink="/student/courses">Submit</a>
+      <a (click)="updateCourse()" class="btn left btn-info btn-block cl-8-top" routerLink="/student/courses">Submit</a>
   </div>
 </div>
 </div>
