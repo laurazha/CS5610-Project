@@ -13,6 +13,7 @@ UserModel.deleteUser = deleteUser;
 UserModel.findUserByFacebookId = findUserByFacebookId;
 UserModel.findAllProfessors = findAllProfessors;
 UserModel.findAllStudents = findAllStudents;
+// UserModel.deleteCourse = deleteCourse;
 // UserModel.addCourseForStudent = addCourseForStudent;
 // UserModel.findCoursesByUser = findCoursesByUser;
 
@@ -77,4 +78,12 @@ function deleteUser(userId) {
 //       courses = user.courses;
 //     });
 //   return courses;
+// }
+
+// function deleteCourse(userId, courseId) {
+//   return UserModel.findById(userId)
+//     .then(function(user) {
+//       user.courses.pull(courseId);
+//       return user.save();
+//     })
 // }

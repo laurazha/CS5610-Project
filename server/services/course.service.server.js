@@ -98,8 +98,8 @@ module.exports = function(app) {
     var userId = req.params["userId"];
     courseModel.findAllCoursesForUser().then(
       function(courses) {
-        console.log("it is in server!");
-        console.log(courses);
+        // console.log("it is in server!");
+        // console.log(courses);
         res.json(courses);
       },
       function(err) {
