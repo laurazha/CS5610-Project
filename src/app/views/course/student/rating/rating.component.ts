@@ -16,8 +16,6 @@ export class RatingComponent implements OnInit {
   courseId: String;
   courses: any[];
   course: Course;
-  updatedCourse: any = {};
-  newRating: String;
   rating: Number;
 
   constructor(private courseService: CourseService,
@@ -48,7 +46,6 @@ export class RatingComponent implements OnInit {
     this.courseService.findCourseById(this.courseId).subscribe(
       (course: Course) => {
           this.course = course;
-          console.log(this.rating);
           let sumRating = new Number(this.course.sumRating);
           let numRating = new Number(this.course.numRating);
           numRating = numRating.valueOf() + 1;
@@ -56,10 +53,8 @@ export class RatingComponent implements OnInit {
           let first = sumRating.valueOf();
           let second = this.rating.valueOf();
           this.course.sumRating = Number.parseInt(first.toString()) + Number.parseInt(second.toString());
-          console.log(this.course.sumRating);
           this.course.rating = this.course.sumRating.valueOf() / (numRating.valueOf());
-          console.log(this.course.rating);
-        this.courseService.updateCourse(this.courseId, this.course).subscribe(
+          this.courseService.updateCourse(this.courseId, this.course).subscribe(
             (course: any) => {
               // this.updatedCourse = course;
               this.router.navigate(['../'], {relativeTo: this.activatedRoute});
