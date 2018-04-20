@@ -14,7 +14,7 @@ UserModel.findUserByFacebookId = findUserByFacebookId;
 UserModel.findAllProfessors = findAllProfessors;
 UserModel.findAllStudents = findAllStudents;
 UserModel.addCourseForStudent = addCourseForStudent;
-UserModel.findCoursesByUser = findCoursesByUser;
+// UserModel.findCoursesByUser = findCoursesByUser;
 
 module.exports = UserModel;
 

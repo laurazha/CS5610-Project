@@ -14,7 +14,7 @@ module.exports = function (app) {
   app.post('/api/register', register);
   app.post('/api/loggedin', loggedin);
   app.get("/api/user/:userId", findUserById);
-  app.get("/api/user/:userId/course", findCoursesByUser);
+  // app.get("/api/user/:userId/course", findCoursesByUser);
   app.put("/api/user/:userId/course/:courseId", addCourseForStudent);
   app.put("/api/user/:userId", updateUser);
   app.delete("/api/user/:userId", deleteUser);
@@ -147,17 +147,17 @@ module.exports = function (app) {
       })
   }
 
-  function findCoursesByUser(req, res) {
-    var userId = req.params["userId"];
-    userModel.findCoursesById(userId).then(
-      function(courses) {
-        res.json(courses);
-      },
-      function(err) {
-        res.sendStatus(400).send(err);
-      }
-    );
-  }
+  // function findCoursesByUser(req, res) {
+  //   var userId = req.params["userId"];
+  //   userModel.findCoursesById(userId).then(
+  //     function(courses) {
+  //       res.json(courses);
+  //     },
+  //     function(err) {
+  //       res.sendStatus(400).send(err);
+  //     }
+  //   );
+  // }
 
   function addCourseForStudent(req, res) {
     var userId = req.params["userId"];

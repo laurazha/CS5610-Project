@@ -23,6 +23,7 @@ export class RatingComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private sharedService: SharedService,
               private router: Router) { }
+
   ngOnInit() {
     this.getUser();
     this.activatedRoute.params.subscribe(
