@@ -54,27 +54,34 @@ export class StudentCourseNewComponent implements OnInit {
     this.courseService.findCourseByName(this.courseName).subscribe(
       (course: any) => {
         this.course = course;
-      }
-    );
-
-    if (this.course == null) {
-      this.errorFlag = true;
-      this.errorMsg = 'This course does not exist!';
-    }
-
-    if (!this.errorFlag) {
-      this.courseService.findCourseByName(this.courseName).subscribe(
-        (course: Course) => {
-          this.course = course;
-          this.courseId = course._id
-          this.courseService.addCourseForStudent(this.userId, this.course._id).subscribe(
-            (course: any) => {
+        if (this.course == null) {
+          this.errorFlag = true;
+          this.errorMsg = 'This course does not exist!';
+        } else {
+          this.errorFlag = false;
+          console.log(this.course._id);
+          this.userService.addCourseForStudent(this.userId, this.course._id, this.user).subscribe(
+            (user: any) => {
               this.router.navigate(['../'], {relativeTo: this.activatedRoute});
             }
           );
         }
-      );
-    }
+      }
+    );
+
+    // if (!this.errorFlag) {
+    //   this.courseService.findCourseByName(this.courseName).subscribe(
+    //     (course: Course) => {
+    //       this.course = course;
+    //       this.courseId = course._id
+    //       this.courseService.addCourseForStudent(this.userId, this.course._id).subscribe(
+    //         (course: any) => {
+    //           this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+    //         }
+    //       );
+    //     }
+    //   );
+    // }
   }
 
 }

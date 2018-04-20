@@ -11,6 +11,7 @@ CourseModel.updateCourse = updateCourse;
 CourseModel.deleteCourse = deleteCourse;
 CourseModel.addCourseForStudent = addCourseForStudent;
 CourseModel.topCourses = topCourses;
+CourseModel.findCoursesByUser = findCoursesByUser;
 
 
 module.exports = CourseModel;
@@ -40,10 +41,11 @@ function addCourseForStudent(userId, courseId) {
     });
 }
 
-function findAllCoursesForUser(userId) {
+function findAllCoursesForUser() {
   // return CourseModel.find({ "_user": userId }).populate('_user').exec();
   return CourseModel.find();
 }
+
 
 function findCourseById(courseId) {
   return CourseModel.findById(courseId);
@@ -65,4 +67,8 @@ function deleteCourse(courseId) {
 function topCourses() {
   return CourseModel.find({})
     .sort({rating: -1}).exec();
+}
+
+function findCoursesByUser(userId) {
+  return CourseModel.find({_user: userId});
 }

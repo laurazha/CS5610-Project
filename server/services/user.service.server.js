@@ -4,6 +4,7 @@ module.exports = function (app) {
   var LocalStrategy = require('passport-local').Strategy;
   var FacebookStrategy = require('passport-facebook').Strategy;
   var bcrypt = require("bcrypt-nodejs");
+  var courseModel = require("../models/course/course.model.server");
 
   app.get('/api/users', findAllUsers);
   app.get('/api/professors', findAllProfessors);
@@ -13,6 +14,8 @@ module.exports = function (app) {
   app.post('/api/register', register);
   app.post('/api/loggedin', loggedin);
   app.get("/api/user/:userId", findUserById);
+  app.get("/api/user/:userId/course", findCoursesByUser);
+  app.put("/api/user/:userId/course/:courseId", addCourseForStudent);
   app.put("/api/user/:userId", updateUser);
   app.delete("/api/user/:userId", deleteUser);
   app.get('/facebook/login', passport.authenticate('facebook', {scope: 'email'}));
@@ -142,6 +145,33 @@ module.exports = function (app) {
       .then(function (user) {
         res.json(user);
       })
+  }
+
+  function findCoursesByUser(req, res) {
+    var userId = req.params["userId"];
+    userModel.findCoursesById(userId).then(
+      function(courses) {
+        res.json(courses);
+      },
+      function(err) {
+        res.sendStatus(400).send(err);
+      }
+    );
+  }
+
+  function addCourseForStudent(req, res) {
+    var userId = req.params["userId"];
+    var courseId = req.params["courseId"];
+    userModel.addCourseForStudent(userId, courseId).then(
+      function(user) {
+        if(user) {
+          res.json(user);
+        } else {
+          res.sendStatus(400).send("Something went wrong");
+        }
+      }
+    );
+
   }
 
   function updateUser(req, res) {

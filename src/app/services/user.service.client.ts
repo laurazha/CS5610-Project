@@ -81,6 +81,21 @@ export class UserService {
       });
   }
 
+  findCoursesByUser(userId: String) {
+    return this._http.get(this.baseUrl + '/api/user/' + userId + '/course').
+      map((response: Response) => {
+        console.log(response.json());
+        return response.json();
+    });
+  }
+
+  addCourseForStudent(userId: String, courseId: String, user: User) {
+    return this._http.put(this.baseUrl + '/api/student/' + userId + '/course/' + courseId, user).
+      map((response: Response) => {
+       return response.json();
+    });
+  }
+
   updateUserInServer(userId: String, user: User) {
     return this._http.put(this.baseUrl + '/api/user/' + userId, user)
       .map((response: Response) => {

@@ -21,17 +21,17 @@ export class CourseService {
     );
   }
 
-  addCourseForStudent(userId: String, courseId: String) {
-    const url = this.baseUrl + '/api/user/' + userId + '/course/' + courseId;
-    return this.http.put(url, userId).map(
-      (res: Response) => {
-        return res.json();
-      }
-    );
-  }
+  // addCourseForStudent(userId: String, courseId: String) {
+  //   const url = this.baseUrl + '/api/user/' + userId + '/course/' + courseId;
+  //   return this.http.put(url, userId).map(
+  //     (res: Response) => {
+  //       return res.json();
+  //     }
+  //   );
+  // }
 
   findCoursesByUser(userId: String) {
-    const url = this.baseUrl + '/api/user/' + userId + '/course';
+    const url = this.baseUrl + '/api/user/course';
     return this.http.get(url).map(
       (res: Response) => {
         return res.json();
