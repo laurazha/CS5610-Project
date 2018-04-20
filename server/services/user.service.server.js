@@ -195,7 +195,7 @@ module.exports = function (app) {
     var userId = req.params["userId"];
     userModel.deleteUser(userId)
       .then(function (status) {
-        res.sendStatus(status);
+        res.send(status);
       });
   }
 
