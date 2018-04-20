@@ -26,7 +26,7 @@ export class ProfessorEditComponent implements OnInit {
   deleteUser(userId) {
     return this.userService.deleteUserInServer(userId).subscribe(
       () => {
-        this.router.navigate(['/admin/professor']);
+        // this.router.navigate(['/admin/professor']);
         this.ngOnInit(); // refresh current page
       }
     );
