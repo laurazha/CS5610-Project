@@ -23,7 +23,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private userService: UserService,
               private router: Router,
-              private sharedService: SharedService) {}
+              private sharedService: SharedService) {
+  }
 
   login() {
     this.username = this.loginForm.value.username;

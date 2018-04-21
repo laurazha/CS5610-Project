@@ -87,9 +87,11 @@
               [disabled]="!f.valid">Login
       </button>
     </form>
+    <div [hidden]="type==='STUDENT'">
     <a href="{{baseUrl}}/facebook/login" class="btn btn-primary btn-block">
       Login with Facebook
     </a>
+    </div>
   </div>
   <div></div>
 </div>

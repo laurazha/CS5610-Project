@@ -40,10 +40,6 @@ export class RegisterComponent implements OnInit {
       this.userService.register(this.username, this.password, this.type, this.firstName, this.lastName, this.email).subscribe(
         (user: User) => {
           this.errorFlag = false;
-          if (!user.type) {   // facebook user
-            user.type = this.type;
-            this.userService.updateUserInServer(user._id, user);
-          }
           if (this.type === 'STUDENT') {
             this.sharedService.user = user;
             this.router.navigate(['/student']);

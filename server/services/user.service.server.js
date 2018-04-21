@@ -23,7 +23,7 @@ module.exports = function (app) {
   app.delete("/api/user/:userId", deleteUser);
   app.get('/facebook/login', passport.authenticate('facebook', {scope: 'email'}));
   app.get('/auth/facebook/callback', passport.authenticate('facebook', {
-    successRedirect: '/profile',
+    successRedirect: '/student',
     failureRedirect: '/login'
   }));
 
@@ -89,6 +89,7 @@ module.exports = function (app) {
         var names = profile.displayName.split(" ");
         var newFacebookUser = {
           username: names[0],
+          type: 'STUDENT',
           password: 'facebook',
           lastName: names[1],
           firstName: names[0],
