@@ -89,11 +89,11 @@ module.exports = function (app) {
         var names = profile.displayName.split(" ");
         var newFacebookUser = {
           username: names[0],
-          type: 'STUDENT',
           password: 'facebook',
           lastName: names[1],
           firstName: names[0],
           email: profile.emails ? profile.emails[0].value : "",
+          type: 'STUDENT',
           facebook: {id: profile.id, token: token}
         };
         return userModel.createUser(newFacebookUser);

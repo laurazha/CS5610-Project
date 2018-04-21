@@ -14,7 +14,6 @@ export class StudentEditComponent implements OnInit {
   students: User[] = [];
 
   constructor(private router: Router,
-              private sharedService: SharedService,
               private userService: UserService) {
     this.user = new User(null, null, null, null, null, null, null);
     this.students = [];
@@ -46,8 +45,6 @@ export class StudentEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.user = this.sharedService.user;
-
     this.userService.findAllStudents().subscribe(
       (students: User[]) => {
         this.students = students;
