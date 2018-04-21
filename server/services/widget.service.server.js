@@ -14,7 +14,7 @@ module.exports = function (app) {
   app.post("/api/upload", upload.single('myFile'), uploadImage);
 
   // var baseUrl = 'http://localhost:3100';
-  var baseUrl = 'https://cs5610-project-xiaoshuang.herokuapp.com/';
+  var baseUrl = 'https://cs5610-project-xiaoshuang.herokuapp.com';
   var n = -1;
 
   function createWidget(req, res) {
