@@ -17,6 +17,7 @@ module.exports = function (app) {
 
   app.get("/api/user/:userId/course", findCoursesByUser);
   app.put("/api/student/:userId/course/:courseId", addCourseForStudent);
+  app.delete("/api/student/:userId/course/:courseId", deleteCourseForStudent);
 
   app.put("/api/user/:userId", updateUser);
   app.delete("/api/user/:userId", deleteUser);
@@ -152,11 +153,12 @@ module.exports = function (app) {
   function findCoursesByUser(req, res) {
     var userId = req.params["userId"];
     userModel.findUserById(userId).then(
-      function(user) {
-        res.json(user.courses);
-      },
-      function(err) {
-        res.sendStatus(400).send(err);
+      function (user) {
+        courseModel.findCoursesByIds(user.courses).then(
+          function (courses) {
+            res.json(courses);
+          }
+        );
       }
     );
   }
@@ -164,16 +166,29 @@ module.exports = function (app) {
   function addCourseForStudent(req, res) {
     var userId = req.params["userId"];
     var courseId = req.params["courseId"];
-
     userModel.findUserById(userId).then(
-      function(user) {
-        courseModel.findCourseById(courseId)
-          .then(
-            function(course) {
-              user.courses.push(course);
-              userModel.updateUser(userId, user).then();
-            }
-          );
+      function (user) {
+        user.courses.push(courseId);
+        userModel.updateUser(userId, user).then();
+        res.json(user);
+      }
+    );
+  }
+
+  function deleteCourseForStudent(req, res) {
+    var userId = req.params["userId"];
+    var courseId = req.params["courseId"];
+    userModel.findUserById(userId).then(
+      function (user) {
+        var i;
+        for (i = 0; i < user.courses.length; i++) {
+          // HAVE TO USE "==", NOT "==="
+          if (user.courses[i] == courseId) {
+            break;
+          }
+        }
+        user.courses.splice(i, 1);
+        userModel.updateUser(userId, user).then();
         res.json(user);
       }
     );
@@ -182,17 +197,16 @@ module.exports = function (app) {
   function updateUser(req, res) {
     var userId = req.params["userId"];
     var user = req.body;
-    userModel.updateUser(userId, user)
-      .exec();
+    userModel.updateUser(userId, user).exec();
     userModel.findUserById(userId)
       .then(function (user) {
         res.json(user);
       });
-
   }
 
   function deleteUser(req, res) {
     var userId = req.params["userId"];
+    courseModel.deleteCoursesByProf(userId).then();
     userModel.deleteUser(userId)
       .then(function (status) {
         res.send(status);

@@ -22,14 +22,12 @@ export class StudentNewComponent implements OnInit {
   type = 'STUDENT';
 
   student: User;
-  user: User;
 
   errorFlag = false;
   errorMsg = 'Passwords mismatch!';
 
   constructor(private userService: UserService,
               private router: Router,
-              private sharedService: SharedService,
               private activatedRoute: ActivatedRoute) { }
 
   CreateStudent() {
@@ -40,7 +38,8 @@ export class StudentNewComponent implements OnInit {
     this.lastName = this.registerForm.value.lastName;
     this.email = this.registerForm.value.email;
     if (this.vpassword === this.password) {
-      this.userService.register(this.username, this.password, this.type, this.firstName, this.lastName, this.email).subscribe(
+      this.userService.register(this.username, this.password, this.type, this.firstName, this.lastName, this.email)
+        .subscribe(
         (user: User) => {
           this.student = user;
           this.errorFlag = false;
@@ -53,8 +52,8 @@ export class StudentNewComponent implements OnInit {
       this.errorFlag = true;
     }
   }
+
   ngOnInit() {
-    this.user = this.sharedService.user;
   }
 
 }

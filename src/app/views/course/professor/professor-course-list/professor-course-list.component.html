@@ -16,14 +16,20 @@
       <div class="container">
         <div class="row">
           <div class ="col-5">
-            <a class="extra-left-padding" routerLink="/professor/courses/{{course._id}}/widget">{{course.name + " " + course.title}}</a>
+            <a class="extra-left-padding"
+               routerLink="/professor/courses/{{course._id}}/widget">
+              {{course.name + " " + course.title}}
+            </a>
           </div>
           <div class="col-5">
-            <button class="btn btn-success btn-sm" routerLink="/professor/courses/{{course._id}}">Edit</button>
+            <button class="btn btn-success btn-sm"
+                    routerLink="/professor/courses/{{course._id}}">
+              Edit
+            </button>
           </div>
           <div class="col">
             <div class="container">
-              <button (click)="delete(course)" class="btn btn-danger btn-sm">Delete</button>
+              <button (click)="deleteCourse(course._id)" class="btn btn-danger btn-sm">Delete</button>
             </div>
           </div>
         </div>

@@ -35,11 +35,6 @@ export class StudentCourseNewComponent implements OnInit {
         this.user = user;
        }
     );
-    // this.courseService.findCourses(this.userId).subscribe(
-    //   (courses: any[]) => {
-    //     this.courses = courses;
-    //   }
-    // );
   }
 
   createCourse() {

@@ -22,6 +22,7 @@
           </div>
           <div class="col">
             <a class="pull-right" routerLink="/student/courses/{{course._id}}">Rate this Course</a>
+            <button class="btn btn-danger pull-right" (click)="deleteCourseForStudent(course._id)">Delete</button>
           </div>
         </div>
       </div>

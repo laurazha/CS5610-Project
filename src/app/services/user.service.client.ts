@@ -95,6 +95,13 @@ export class UserService {
     });
   }
 
+  deleteCourseForStudent(userId: String, courseId: String) {
+    return this._http.delete(this.baseUrl + '/api/student/' + userId + '/course/' + courseId).
+    map((response: Response) => {
+      return response.json();
+    });
+  }
+
   updateUserInServer(userId: String, user: User) {
     return this._http.put(this.baseUrl + '/api/user/' + userId, user)
       .map((response: Response) => {

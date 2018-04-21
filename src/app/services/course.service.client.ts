@@ -21,7 +21,7 @@ export class CourseService {
   }
 
   findCourses(userId: String) {
-    const url = this.baseUrl + '/api/user/courses/' + userId;
+    const url = this.baseUrl + '/api/user/' + userId + '/course';
     return this.http.get(url).map(
       (res: Response) => {
         return res.json();
