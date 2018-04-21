@@ -19,14 +19,12 @@
 </nav>
 
 <div class="bg nav-padding">
-  <div></div>
   <div class="container">
 
     <div *ngIf="errorFlag"
          class="alert alert-danger">
       {{errorMsg}}
     </div>
-
 
     <form (ngSubmit)="CreateStudent()" #r="ngForm">
       <label for="username">Username:</label>
@@ -103,7 +101,7 @@
       <a class="btn btn-danger btn-block"
          routerLink="../">Cancel</a>
     </form>
-
+    <br/>
   </div>
 </div>
 

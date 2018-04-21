@@ -29,4 +29,12 @@ export class StudentCourseListComponent implements OnInit {
     );
   }
 
+  deleteCourseForStudent(courseId) {
+    this.userService.deleteCourseForStudent(this.userId, courseId).subscribe(
+      () => {
+        this.ngOnInit();
+      }
+    );
+  }
+
 }

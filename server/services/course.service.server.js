@@ -5,13 +5,13 @@ module.exports = function(app) {
   app.delete("/api/course/:courseId", deleteCourse);
   app.get("/api/coursename/:courseName", findCourseByName);
   app.get("/api/topcourses", topCourses);
-  app.get("/api/user/courses/:userId", findCourses);
+
   var courseModel = require("../models/course/course.model.server");
 
   function createCourse(req, res) {
     var userId = req.params.userId;
     var course = req.body;
-    courseModel.createCourseForUser(userId, course).then(
+    courseModel.createCourseForProf(userId, course).then(
       function (course) {
         if (course) {
           res.json(course);
@@ -93,17 +93,7 @@ module.exports = function(app) {
     );
   }
 
-  function findCourses(req, res) {
-    var userId = req.params["userId"];
-    courseModel.findAllCoursesForUser().then(
-      function(courses) {
-        res.json(courses);
-      },
-      function(err) {
-        res.sendStatus(400).send(err);
-      }
-    );
-  }
+
 };
 
 

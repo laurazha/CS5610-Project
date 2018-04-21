@@ -40,7 +40,7 @@ export class StudentEditComponent implements OnInit {
   updateUser(userId, changed_user) {
     return this.userService.updateUserInServer(userId, changed_user).subscribe(
       () => {
-        window.location.reload();
+        this.ngOnInit();
       }
     );
   }
