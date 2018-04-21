@@ -1,12 +1,14 @@
 # CS5610Project
+Github link:
+Heroku link:
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.
+## Project Description
+This is a school course website consisting of 4 kinds of user: student, professor, admin, guest
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
+## User Info
+Admin user: 
+username: admin
+password: admin
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 

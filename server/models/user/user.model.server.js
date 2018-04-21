@@ -13,6 +13,7 @@ UserModel.findUserByFacebookId = findUserByFacebookId;
 UserModel.findAllProfessors = findAllProfessors;
 UserModel.findAllStudents = findAllStudents;
 
+
 module.exports = UserModel;
 
 function findUserByFacebookId(facebookId) {

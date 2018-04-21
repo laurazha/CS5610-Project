@@ -41,6 +41,14 @@ function updateCourse(courseId, course) {
 
 function deleteCourse(courseId) {
   return CourseModel.findByIdAndRemove(courseId);
+  // return CourseModel.findOne({_id: courseId})
+  //   .then(function(course) {
+  //     var userId = course._user;
+  //     CourseModel.remove({id: courseId})
+  //       .then(function() {
+  //         return UserModel.deleteCourse(userId, courseId);
+  //       })
+  //   })
 }
 
 function topCourses() {
