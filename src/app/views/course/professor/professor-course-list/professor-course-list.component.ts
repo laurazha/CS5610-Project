@@ -17,9 +17,7 @@ export class ProfessorCourseListComponent implements OnInit {
 
   constructor(private courseService: CourseService,
               private activatedRoute: ActivatedRoute,
-              private sharedService: SharedService,
-              private userService: UserService,
-              private router: Router) { }
+              private sharedService: SharedService) { }
 
   ngOnInit() {
     this.userId = this.sharedService.user['_id'];
@@ -33,7 +31,7 @@ export class ProfessorCourseListComponent implements OnInit {
   deleteCourse(courseId: string) {
     this.courseService.deleteCourse(courseId).subscribe(
       (course: any) => {
-        this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+        this.ngOnInit();
       },
       (error: any) => {
         // Place error message;

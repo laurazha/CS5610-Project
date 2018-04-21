@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CourseService} from '../../../../services/course.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
 import {SharedService} from '../../../../services/shared.service';
@@ -35,31 +35,27 @@ export class RatingComponent implements OnInit {
             this.course = course;
           }
         );
-    });
+      });
   }
 
   getUser() {
     this.userId = this.sharedService.user['_id'];
   }
 
-  updateCourse(course) {
+  updateCourse() {
     this.courseService.findCourseById(this.courseId).subscribe(
       (course: Course) => {
-          this.course = course;
-          let sumRating = new Number(this.course.sumRating);
-          let numRating = new Number(this.course.numRating);
-          numRating = numRating.valueOf() + 1;
-          this.course.numRating = numRating;
-          let first = sumRating.valueOf();
-          let second = this.rating.valueOf();
-          this.course.sumRating = Number.parseInt(first.toString()) + Number.parseInt(second.toString());
-          this.course.rating = this.course.sumRating.valueOf() / (numRating.valueOf());
-          this.courseService.updateCourse(this.courseId, this.course).subscribe(
-            (course: any) => {
-              // this.updatedCourse = course;
-              this.router.navigate(['../'], {relativeTo: this.activatedRoute});
-            },
-          );
+        this.course = course;
+        this.course.numRating = this.course.numRating.valueOf() + 1;
+        this.course.sumRating = this.course.sumRating.valueOf() + (+this.rating);
+        this.course.rating = this.course.sumRating.valueOf() / this.course.numRating.valueOf();
+        this.course.rating = Math.round(+this.course.rating.valueOf() * 100) / 100;
+
+        this.courseService.updateCourse(this.courseId, this.course).subscribe(
+          (course: any) => {
+            this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+          },
+        );
       }
     );
   }

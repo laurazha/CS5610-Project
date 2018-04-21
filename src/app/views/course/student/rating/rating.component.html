@@ -6,23 +6,30 @@
     Courses
   </div>
   <a class="navbar-brand pull-right" routerLink="/student/courses">
-  <span class="fa fa-plus text-white"></span>
+    <span class="fa fa-plus text-white"></span>
   </a>
 </nav>
 
 <div class="bg">
-<div class="container">
-  <div>
-      <div class="form-group cl-8-top">
-        <label for="course-name">Course Name: {{course.name}}  {{course.title}}</label>
+  <div class="container">
+    <div>
+      <div *ngIf="errorFlag"
+           class="alert alert-danger">
+        {{errorMsg}}
       </div>
-      <div class="form-group cl-8-top">
-        <label for="course-name">Rate: </label>
-        <input [(ngModel)]="rating" type="text" id="course-name" placeholder="10" ngModel required [ngModelOptions]="{standalone: true}">
+      <div class="font-sketch large-font">
+        Course Name: &nbsp;&nbsp; {{course.name}}&nbsp;{{course.title}}
+        <br/>
+        Rate (From 0 to 10): &nbsp;&nbsp; {{rating}}
+        <br/>
+        <input [(ngModel)]="rating"
+               type="range" min="0" max="10" step="0.1" value="5"
+               id="course-rating" placeholder="10"
+               ngModel required [ngModelOptions]="{standalone: true}">
       </div>
       <a (click)="updateCourse()" class="btn left btn-info btn-block cl-8-top" routerLink="/student/courses">Submit</a>
+    </div>
   </div>
-</div>
 </div>
 
 <nav class="navbar fixed-bottom nav-blue">

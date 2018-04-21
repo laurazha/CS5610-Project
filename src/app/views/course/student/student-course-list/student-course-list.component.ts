@@ -30,7 +30,6 @@ export class StudentCourseListComponent implements OnInit {
   }
 
   deleteCourseForStudent(courseId) {
-    console.log('component ts: courseId = ' + courseId);
     this.userService.deleteCourseForStudent(this.userId, courseId).subscribe(
       () => {
         this.ngOnInit();

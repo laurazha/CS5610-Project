@@ -63,6 +63,5 @@ function findCoursesByIds(courseIds) {
   return CourseModel.find({
     '_id': {$in: courseIds}
   }, function (err, docs) {
-    console.log(docs);
   });
 }
