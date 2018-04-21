@@ -10,36 +10,38 @@
   </a>
 </nav>
 
-<div class="bg">
-  <div class="container">
-    <div class="row extra-padding" *ngFor="let course of courses">
-      <div class="container">
-        <div class="row">
-          <div class ="col-5">
-            <a class="extra-left-padding"
-               routerLink="/professor/courses/{{course._id}}/widget">
-              {{course.name + " " + course.title}}
-            </a>
-          </div>
-          <div class="col-5">
-            <button class="btn btn-success btn-sm"
-                    routerLink="/professor/courses/{{course._id}}">
-              Edit
-            </button>
-          </div>
-          <div class="col">
-            <div class="container">
-              <button (click)="deleteCourse(course._id)" class="btn btn-danger btn-sm">Delete</button>
-            </div>
-          </div>
-        </div>
-        <br/>
-      </div>
-    </div>
 
-    <div class = "row extra-padding">
-      <a class="extra-left-padding" routerLink="/professor/courses/new">Add Another Course</a>
-    </div>
+<div class="bg nav-padding">
+  <div></div>
+  <div class="container">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col" class="text-align">Course Name</th>
+        <th scope="col" class="text-align">Course Title</th>
+        <th scope="col" class="text-align">Actions</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr *ngFor = "let course of courses">
+        <td class="text-align" routerLink="/professor/courses/{{course._id}}/widget">{{course.name}}</td>
+        <td class="text-align">{{course.title}}</td>
+        <td class="actions">
+          <button class="btn btn-outline-success"
+                  routerLink="/professor/courses/{{course._id}}"><i class="fa fa-edit"></i>Edit</button>
+          <button class="btn btn-outline-danger" (click)="deleteCourse(course._id)">
+            <i class="fas fa-exclamation-triangle"></i>Delete</button>
+        </td>
+      </tr>
+
+      </tbody>
+    </table>
+
+    <br/>
+
+    <a class="btn btn-info btn-block"
+       routerLink="new">Add new Course</a>
   </div>
 </div>
 
