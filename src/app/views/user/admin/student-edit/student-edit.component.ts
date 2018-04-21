@@ -11,7 +11,8 @@ import {UserService} from '../../../../services/user.service.client';
 })
 export class StudentEditComponent implements OnInit {
   user: User;
-  students: User[] = [];
+  students: User[];
+  modalFlag: boolean;
 
   constructor(private router: Router,
               private userService: UserService) {
@@ -29,11 +30,14 @@ export class StudentEditComponent implements OnInit {
   }
 
   findUserById(userId) {
-    return this.userService.findUserById(userId).subscribe(
+    this.userService.findUserById(userId).subscribe(
       (user: User) => {
         this.user = user;
       }
     );
+    if (this.user) {
+      this.modalFlag = true;
+    }
   }
 
   updateUser(userId, changed_user) {

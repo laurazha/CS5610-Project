@@ -16,8 +16,7 @@ export class ProfessorEditComponent implements OnInit {
 
   constructor(private router: Router,
               private sharedService: SharedService,
-              private userService: UserService,
-              private activatedRoute: ActivatedRoute) {
+              private userService: UserService) {
 
     this.user = new User(null, null, null, null, null, null, null);
     this.professors = [];
