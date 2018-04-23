@@ -13,8 +13,8 @@ module.exports = function (app) {
   var upload = multer({dest: __dirname + '/../../src/assets/uploads'});
   app.post("/api/upload", upload.single('myFile'), uploadImage);
 
-  var baseUrl = 'http://localhost:3100';
-  // var baseUrl = 'https://cs5610-project-xiaoshuang.herokuapp.com';
+  // var baseUrl = 'http://localhost:3100';
+  var baseUrl = 'https://cs5610-project-xiaoshuang.herokuapp.com';
   var n = -1;
 
   function createWidget(req, res) {
@@ -79,8 +79,8 @@ module.exports = function (app) {
     var widgetId = req.body.widgetId;
     var myFile = req.file;
 
-    // var callbackUrl = baseUrl + "/professor/courses/" + courseId + "/widget/";
-    var callbackUrl = "http://localhost:4200/professor/courses/"+courseId+"/widget";
+    var callbackUrl = baseUrl + "/professor/courses/" + courseId + "/widget/";
+    // var callbackUrl = "http://localhost:4200/professor/courses/"+courseId+"/widget";
 
     if (myFile === null) {
       res.redirect(callbackUrl);
