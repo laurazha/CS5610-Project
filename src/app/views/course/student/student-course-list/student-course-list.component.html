@@ -25,7 +25,7 @@
 
       <tbody>
       <tr *ngFor = "let course of courses">
-        <td class="text-align btn btn-outline-primary"
+        <td class="text-align btn-link"
             routerLink="/student/courses/{{course._id}}/widget">{{course.name}}</td>
         <td class="text-align">{{course.title}}</td>
         <td class="actions">
